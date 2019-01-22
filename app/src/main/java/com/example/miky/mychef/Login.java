@@ -20,7 +20,7 @@ public class Login extends Activity {
         avviaSchermata.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(Login.this,"schermata avviata da bottone" , Toast.LENGTH_LONG).show();
+                //Toast.makeText(Login.this,"schermata avviata da bottone" , Toast.LENGTH_LONG).show();
                 Intent secondIntent = new Intent(Login.this,SignUp.class);
                 secondIntent.putExtra("","");
                 startActivity(secondIntent);
