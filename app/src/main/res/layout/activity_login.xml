@@ -17,8 +17,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/editText"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="60dp"
-            android:ems="10"
+            android:layout_marginTop="15dp"
+            android:ems="11"
             android:gravity="center"
             android:hint="PASSWORD" />
 
@@ -29,7 +29,7 @@
             android:layout_below="@id/textView"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="60dp"
-            android:ems="10"
+            android:ems="11"
             android:gravity="center"
             android:hint="NOME UTENTE" />
 
@@ -39,43 +39,35 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="60dp"
+            android:gravity="center"
             android:text="LOGIN"
-            android:textColor="@android:color/holo_blue_dark"
+            android:textColor="@android:color/holo_orange_dark"
             android:textSize="40sp"
             android:textStyle="bold|italic" />
 
         <Button
+            style="@android:style/Widget.Holo.Button"
+            android:background="@android:color/holo_orange_dark"
             android:id="@+id/button"
-            android:layout_alignParentRight="true"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginRight="80dp"
             android:layout_below="@+id/editText2"
-            android:layout_marginTop="60dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="80dp"
+            android:layout_marginRight="80dp"
             android:text="SIGNUP" />
 
         <Button
             android:id="@+id/button2"
-            android:layout_alignParentLeft="true"
-            android:layout_width="wrap_content"
+            style="@android:style/Widget.Holo.Button"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/editText2"
-            android:layout_marginTop="60dp"
+            android:layout_alignParentLeft="true"
             android:layout_marginLeft="80dp"
+            android:layout_marginTop="80dp"
+            android:background="@android:color/holo_orange_dark"
             android:text="LOGIN" />
-
-
-
-        <LinearLayout
-            android:id="@+id/layout1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="60dp"
-            android:layout_below="@id/editText2">
-
-
-        </LinearLayout>
 
     </RelativeLayout>
 </ScrollView>

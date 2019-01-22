@@ -1,108 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".SignUp">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fitsSystemWindows="true">
 
-    <EditText
-        android:id="@+id/editText8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="423dp"
-        android:ems="10"
-        android:gravity="center"
-        android:hint="CITTA'"
-        tools:layout_editor_absoluteX="85dp"
-        tools:layout_editor_absoluteY="279dp" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".SignUp">
 
-    <EditText
-        android:id="@+id/editText9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="94dp"
-        android:layout_marginTop="366dp"
-        android:ems="10"
-        android:gravity="center"
-        android:hint="PROVINCIA"
-        tools:layout_editor_absoluteX="85dp"
-        tools:layout_editor_absoluteY="353dp" />
+        <EditText
+            android:id="@+id/editText14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editText13"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:ems="11"
+            android:gravity="center"
+            android:hint="CONFERMA PASSWORD" />
 
-    <EditText
-        android:id="@+id/editText10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="97dp"
-        android:layout_marginTop="307dp"
-        android:ems="10"
-        android:gravity="center"
-        android:hint="INDIRIZZO"
-        tools:layout_editor_absoluteX="85dp"
-        tools:layout_editor_absoluteY="425dp" />
+        <EditText
+            android:id="@+id/editText13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editText12"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:ems="11"
+            android:gravity="center"
+            android:hint="PASSWORD" />
 
-    <EditText
-        android:id="@+id/editText11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="255dp"
-        android:ems="10"
-        android:gravity="center"
-        android:hint="NOME UTENTE"
-        tools:layout_editor_absoluteX="85dp"
-        tools:layout_editor_absoluteY="497dp" />
+        <EditText
+            android:id="@+id/editText12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editText11"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:ems="11"
+            android:gravity="center"
+            android:hint="EMAIL" />
 
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="93dp"
-        android:layout_marginTop="201dp"
-        android:ems="10"
-        android:gravity="center"
-        android:hint="COGNOME"
-        tools:layout_editor_absoluteX="85dp"
-        tools:layout_editor_absoluteY="212dp" />
+        <EditText
+            android:id="@+id/editText8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editText9"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:ems="11"
+            android:gravity="center"
+            android:hint="CITTA'" />
 
-    <EditText
-        android:id="@+id/editText4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="91dp"
-        android:layout_marginTop="154dp"
-        android:ems="10"
-        android:gravity="center"
-        android:hint="NOME "
-        tools:layout_editor_absoluteX="85dp"
-        tools:layout_editor_absoluteY="132dp" />
+        <EditText
+            android:id="@+id/editText9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editText15"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:ems="11"
+            android:gravity="center"
+            android:hint="PROVINCIA" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="144dp"
-        android:layout_marginTop="43dp"
-        android:text="SIGN UP"
-        android:textColor="@android:color/holo_blue_dark"
-        android:textSize="40sp"
-        android:textStyle="bold|italic"
-        tools:layout_editor_absoluteX="143dp"
-        tools:layout_editor_absoluteY="51dp" />
+        <EditText
+            android:id="@+id/editText15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editText14"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:ems="11"
+            android:gravity="center"
+            android:hint="INDIRIZZO" />
 
-</RelativeLayout>
+        <EditText
+            android:id="@+id/editText11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editText3"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:ems="11"
+            android:gravity="center"
+            android:hint="NOME UTENTE" />
+
+        <EditText
+            android:id="@+id/editText3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editText4"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:ems="11"
+            android:gravity="center"
+            android:hint="COGNOME" />
+
+        <EditText
+            android:id="@+id/editText4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="60dp"
+            android:ems="11"
+            android:gravity="center"
+            android:hint="NOME " />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="60dp"
+            android:gravity="center"
+            android:text="SIGN UP"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="40sp"
+            android:textStyle="bold|italic" />
+
+        <Button
+            style="@android:style/Widget.Holo.Button"
+            android:background="@android:color/holo_orange_dark"
+            android:id="@+id/button"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editText8"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="80dp"
+            android:layout_marginRight="80dp"
+            android:text="SIGNUP" />
+
+        <Button
+            android:id="@+id/button2"
+            style="@android:style/Widget.Holo.Button"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editText8"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginBottom="80dp"
+            android:background="@android:color/holo_orange_dark"
+            android:text="LOGIN" />
+
+    </RelativeLayout>
+</ScrollView>
