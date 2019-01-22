@@ -14,8 +14,6 @@ public class Login extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
-
         Button avviaSchermata = (Button)findViewById(R.id.button);
         avviaSchermata.setOnClickListener(new View.OnClickListener() {
             @Override
