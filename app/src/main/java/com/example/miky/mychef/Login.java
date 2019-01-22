@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class Login extends Activity {
 
@@ -15,11 +16,11 @@ public class Login extends Activity {
 
 
 
-        Button avviaSchermata = (Button)findViewById(R.id.bottom);
+        Button avviaSchermata = (Button)findViewById(R.id.button);
         avviaSchermata.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(MainActivity.this,"schermata avviata da bottone" , Toast.LENGTH_LONG).show();
+                Toast.makeText(Login.this,"schermata avviata da bottone" , Toast.LENGTH_LONG).show();
                 Intent secondIntent = new Intent(Login.this,SignUp.class);
                 secondIntent.putExtra("","");
                 startActivity(secondIntent);
