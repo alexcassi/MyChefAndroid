@@ -14,15 +14,11 @@ public class Login extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
-
         Button avviaSchermata = (Button)findViewById(R.id.button);
         avviaSchermata.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(Login.this,"" , Toast.LENGTH_LONG).show();
                 Intent secondIntent = new Intent(Login.this,SignUp.class);
-                secondIntent.putExtra("","");
                 startActivity(secondIntent);
             }
         });
