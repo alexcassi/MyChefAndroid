@@ -1,40 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+
+
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:fitsSystemWindows="true">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/layer1"
+    android:fitsSystemWindows="true"
+    tools:context=".Login" >
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:context=".Login">
+    <RelativeLayout  android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/editText"
+            android:layout_below="@id/nome_utente"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
             android:ems="11"
             android:gravity="center"
-            android:hint="PASSWORD" />
+            android:hint="PASSWORD"
+            android:inputType="textPassword"
+            android:textColorHint="@android:color/background_dark" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/nome_utente"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textView"
+            android:layout_below="@id/titolo"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="60dp"
             android:ems="11"
             android:gravity="center"
-            android:hint="NOME UTENTE" />
+            android:hint="NOME UTENTE"
+            android:textColorHint="@android:color/background_dark" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/titolo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -46,28 +53,18 @@
             android:textStyle="bold|italic" />
 
         <Button
-            style="@android:style/Widget.Holo.Button"
-            android:background="@android:color/holo_orange_dark"
-            android:id="@+id/button"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/editText2"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="80dp"
-            android:layout_marginRight="80dp"
-            android:text="SIGNUP" />
-
-        <Button
-            android:id="@+id/button2"
+            android:id="@+id/login"
             style="@android:style/Widget.Holo.Button"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/editText2"
+            android:layout_below="@+id/password"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="80dp"
+            android:layout_marginLeft="150dp"
             android:layout_marginTop="80dp"
             android:background="@android:color/holo_orange_dark"
             android:text="LOGIN" />
 
     </RelativeLayout>
 </ScrollView>
+
+

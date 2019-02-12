@@ -13,7 +13,7 @@ public class SignUp extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        Button avviaSchermata = (Button)findViewById(R.id.button2);
+        Button avviaSchermata = (Button)findViewById(R.id.signup);
         avviaSchermata.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
