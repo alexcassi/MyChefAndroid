@@ -19,7 +19,7 @@
             android:id="@+id/logo"
             android:layout_width="wrap_content"
             android:layout_height="300dp"
-            android:src="@drawable/logo_contorno" />
+            android:src="@drawable/logo_contornato" />
 
         <Button
             android:id="@+id/login"
