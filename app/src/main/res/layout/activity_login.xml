@@ -56,12 +56,12 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/password"
-            android:layout_marginBottom="80dp"
-            android:gravity="center"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="80dp"
+            android:layout_marginBottom="80dp"
             android:background="@android:color/holo_orange_dark"
-            android:text="LOGIN" />
+            android:gravity="center"
+            android:text="PROFILO" />
 
     </RelativeLayout>
 </ScrollView>

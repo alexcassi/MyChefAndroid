@@ -106,7 +106,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/nome"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
             android:ems="11"
             android:gravity="center"
             android:hint="COGNOME"

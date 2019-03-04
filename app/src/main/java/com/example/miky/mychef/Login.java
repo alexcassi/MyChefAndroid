@@ -17,7 +17,7 @@ public class Login extends Activity {
         avviaSchermata.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent secondIntent = new Intent(Login.this,SignUp.class);
+                Intent secondIntent = new Intent(Login.this,Profilo_chef.class);
                 startActivity(secondIntent);
             }
         });
