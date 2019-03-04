@@ -9,7 +9,8 @@
         android:roundIcon="@drawable/logo_nuovo2_android"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Login"></activity>
+        <activity android:name=".Profilo_chef"></activity>
+        <activity android:name=".Login" />
         <activity android:name=".home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
