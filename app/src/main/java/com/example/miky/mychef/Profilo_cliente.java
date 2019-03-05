@@ -6,31 +6,29 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Login extends Activity {
+public class Profilo_cliente extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_profilo_cliente);
 
-        Button avviaSchermata = (Button)findViewById(R.id.login);
+        Button avviaSchermata = (Button)findViewById(R.id.home);
         avviaSchermata.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent secondIntent = new Intent(Login.this,Profilo_chef.class);
+                Intent secondIntent = new Intent(Profilo_cliente.this,home.class);
                 startActivity(secondIntent);
             }
         });
 
-        Button avviaSchermata1 = (Button)findViewById(R.id.chef);
+        Button avviaSchermata1 = (Button)findViewById(R.id.logout);
         avviaSchermata1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent secondIntent = new Intent(Login.this,Profilo_cliente.class);
+                Intent secondIntent = new Intent(Profilo_cliente.this,Login.class);
                 startActivity(secondIntent);
             }
         });
-
-
     }
 }

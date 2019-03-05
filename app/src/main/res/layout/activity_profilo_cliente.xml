@@ -1,17 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/layer1"
     android:fitsSystemWindows="true"
-    tools:context=".SignUp">
+    tools:context=".Login" >
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <RelativeLayout  android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
 
         <TextView
             android:id="@+id/titolo"
@@ -55,39 +52,39 @@
             android:id="@+id/indirizzo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:layout_below="@id/cognome"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
             android:layout_marginTop="15dp"
             android:ems="8"
             android:gravity="center"
-            android:layout_marginLeft="5dp"
-            android:hint="EMAIL "
+            android:hint="INDIRIZZO"
             android:textColorHint="@android:color/background_dark" />
-
-        <Button
-            android:id="@+id/ricette"
-            style="@android:style/Widget.Holo.Button"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/indirizzo"
-            android:layout_marginTop="80dp"
-            android:gravity="center"
-            android:layout_centerHorizontal="true"
-            android:background="@android:color/holo_orange_dark"
-            android:text="RICETTE" />
 
         <Button
             android:id="@+id/home"
             style="@android:style/Widget.Holo.Button"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/ricette"
+            android:layout_below="@+id/indirizzo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="80dp"
+            android:background="@android:color/holo_orange_dark"
+            android:gravity="center"
+            android:text="HOME" />
+
+        <Button
+            android:id="@+id/logout"
+            style="@android:style/Widget.Holo.Button"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/home"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="80dp"
-            android:gravity="center"
-            android:layout_centerHorizontal="true"
             android:background="@android:color/holo_orange_dark"
-            android:text="HOME" />
+            android:gravity="center"
+            android:text="LOGOUT" />
 
         <Button
             android:id="@+id/edit"
@@ -113,5 +110,5 @@
             android:src="@mipmap/ic_launcher" />
 
     </RelativeLayout>
-    </ScrollView>
+</ScrollView>
 
