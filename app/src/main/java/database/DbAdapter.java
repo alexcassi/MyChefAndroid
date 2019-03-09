@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteDatabase;
 import java.sql.SQLException;
 import java.util.HashMap;
 
+import entità.Chef;
+
 public class DbAdapter {
     @SuppressWarnings("unused")
     private static final String LOG_TAG = DbAdapter.class.getSimpleName();
@@ -46,8 +48,8 @@ public class DbAdapter {
     }
 
     //create a chef
-    public long createChef(String email, String name, String surname) {
-        ContentValues initialValues = createContentValues(email, name, surname);
+    public long createChef(Chef c) {
+        ContentValues initialValues = createContentValues(c.getEmail(), c.getNome(), c.getCognome());
         return database.insertOrThrow(DATABASE_TABLE, null, initialValues);
     }
 
@@ -68,7 +70,7 @@ public class DbAdapter {
     }
 
     //fetch chefs filter by a string
-    public Cursor fetchContactsByFilter(String filter) {
+    public Cursor fetchChefsByFilter(String filter) {
         Cursor mCursor = database.query(true, DATABASE_TABLE, new String[] {
                         KEY_EMAIL, KEY_NOME, KEY_COGNOME},
                 KEY_NOME + " like '%"+ filter + "%'", null, null, null,
@@ -88,4 +90,31 @@ public class DbAdapter {
         }
         return wordList;
     }
+
+    /*
+    public void insertFast(int insertCount) {
+        // you can use INSERT only
+        String sql = "INSERT OR REPLACE INTO " + tableName + " ( name, description ) VALUES ( ?, ? )";
+        SQLiteDatabase db = this.getWritableDatabase();
+    */
+ /* Come da http://developer.android.com/reference/android/database/sqlite/SQLiteDatabase.html
+ * Writers deve usare beginTransactionNonExclusive() oppure
+ beginTransactionWithListenerNonExclusive(SQLiteTransactionListener) per iniziare una transazione */
+       /* db.beginTransactionNonExclusive();
+
+        SQLiteStatement stmt = db.compileStatement(sql);
+        for(int x=1; x<=insertCount; x++){
+            stmt.bindString(1, "Name # " + x);
+            stmt.bindString(2, "Description # " + x);
+
+            stmt.execute();
+            stmt.clearBindings();
+        }
+
+        db.setTransactionSuccessful();
+        db.endTransaction();
+
+        db.close();
+    }
+    */
 }
