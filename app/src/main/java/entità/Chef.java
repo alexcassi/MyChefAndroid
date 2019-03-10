@@ -1,9 +1,14 @@
 package entità;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Chef {
 
+    @SerializedName("email")
     String email;
+    @SerializedName("nome")
     String nome;
+    @SerializedName("cognome")
     String cognome;
 
     public Chef(){
