@@ -2,9 +2,7 @@ package com.example.miky.mychef;
 
 import android.app.Activity;
 import android.database.Cursor;
-import android.nfc.Tag;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,39 +14,32 @@ import entità.Chef;
 
 public class TEST_DB extends Activity {
 
-    private DbAdapter dbHelper;
+    private DbAdapter adapter = new DbAdapter(this);
     private Cursor cursor;
-
     TextView demoTextView;
-    Button button;
-
+    Button show_button;
+    Button delete_button;
+    Button insert_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test__db);
-
         demoTextView = (TextView)findViewById(R.id.demoTextView);
-        button = (Button)findViewById(R.id.button);
+        show_button = (Button)findViewById(R.id.button1);
+        delete_button = (Button)findViewById(R.id.button2);
+        insert_button = findViewById(R.id.button3);
 
-
-        dbHelper = new DbAdapter(this);
-        try {
-            dbHelper.open();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        // CREAZIONE CHEF NEL DB
-        //dbHelper.createChef(new Chef("email_Y","Y","Z"));
-
-        button.setOnClickListener(new View.OnClickListener() {
+        show_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 demoTextView.setText("");
-
-                cursor = dbHelper.fetchAllChefs();
-
+                try {
+                    adapter.open();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                cursor = adapter.fetchAllChefs();
                 while ( cursor.moveToNext() ) {
                     String chefID = cursor.getString( cursor.getColumnIndex(DbAdapter.KEY_EMAIL) );
                     String nome = cursor.getString( cursor.getColumnIndex(DbAdapter.KEY_NOME) );
@@ -56,6 +47,27 @@ public class TEST_DB extends Activity {
                     String text ="Email: " + chefID + ", Nome: " + nome + ", Cognome: " + cognome + "\n";
                     demoTextView.setText(demoTextView.getText().toString() + text);
                 }
+                adapter.close();
+            }
+        });
+
+        delete_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getApplicationContext().deleteDatabase("mydatabase.db");
+            }
+        });
+
+        insert_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    adapter.open();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                adapter.insertFast(3);
+                adapter.close();
             }
         });
     }

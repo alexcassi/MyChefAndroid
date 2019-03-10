@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteStatement;
 
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -91,21 +92,22 @@ public class DbAdapter {
         return wordList;
     }
 
-    /*
+
     public void insertFast(int insertCount) {
         // you can use INSERT only
-        String sql = "INSERT OR REPLACE INTO " + tableName + " ( name, description ) VALUES ( ?, ? )";
-        SQLiteDatabase db = this.getWritableDatabase();
-    */
+        String sql = "INSERT OR REPLACE INTO " + DATABASE_TABLE + " ( email, nome, cognome ) VALUES ( ?, ?, ? )";
+        SQLiteDatabase db = this.dbHelper.getWritableDatabase();
+
  /* Come da http://developer.android.com/reference/android/database/sqlite/SQLiteDatabase.html
  * Writers deve usare beginTransactionNonExclusive() oppure
  beginTransactionWithListenerNonExclusive(SQLiteTransactionListener) per iniziare una transazione */
-       /* db.beginTransactionNonExclusive();
+        db.beginTransactionNonExclusive();
 
         SQLiteStatement stmt = db.compileStatement(sql);
         for(int x=1; x<=insertCount; x++){
-            stmt.bindString(1, "Name # " + x);
-            stmt.bindString(2, "Description # " + x);
+            stmt.bindString(1, ""+ x + "@" + x + ".com");
+            stmt.bindString(2, "nome" + x);
+            stmt.bindString(3, "cognome" + x);
 
             stmt.execute();
             stmt.clearBindings();
@@ -116,5 +118,5 @@ public class DbAdapter {
 
         db.close();
     }
-    */
+
 }
