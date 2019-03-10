@@ -2,6 +2,12 @@ package com.example.miky.mychef;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.TextView;
+
+import com.google.gson.Gson;
+
+import java.util.List;
 
 import endpoint.MyApiEndpointInterface;
 import entità.Chef;
@@ -12,11 +18,14 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 public class TEST_RETROFIT extends Activity {
 
-    public static final String BASE_URL = "http://http://10.0.2.2:8080/web-mychef/";
+    public static final String BASE_URL = "http://10.0.2.2:8080/";
+    TextView tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_test__retrofit);
+        tv = findViewById(R.id.tv1);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
@@ -24,17 +33,29 @@ public class TEST_RETROFIT extends Activity {
                 .build();
 
         MyApiEndpointInterface apiService = retrofit.create(MyApiEndpointInterface.class);
-        Call<Chef> call = apiService.getChefs();
-        call.enqueue(new Callback<Chef>() {
+        Call<List<Chef>> call = apiService.getChefs();
+        call.enqueue(new Callback<List<Chef>>() {
             @Override
-            public void onResponse(Call<Chef> call, Response<Chef> response) {
+            public void onResponse(Call<List<Chef>> call, Response<List<Chef>> response) {
                 int statusCode = response.code();
-                Chef chef = response.body();
+                List<Chef> lista_chef = response.body();
+                Log.w("la risposta",new Gson().toJson(response));
+                Log.w("la risposta", response.toString());
+
+                StringBuilder builder = new StringBuilder();
+                for (Chef c: lista_chef) {
+                    builder.append(c.getNome());
+                    builder.append(", ");
+                }
+
+                tv.setText(builder.toString());
+
             }
             @Override
-            public void onFailure(Call<Chef> call, Throwable t) {
-                // Log error richiesta fallita
+            public void onFailure(Call<List<Chef>> call, Throwable t) {
+                Log.w("errore", "errore");
             }
         });
+
     }
 }
