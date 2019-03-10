@@ -2,46 +2,42 @@ package entità;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Chef {
+import java.util.List;
 
-    @SerializedName("email")
-    String email;
-    @SerializedName("nome")
-    String nome;
-    @SerializedName("cognome")
-    String cognome;
+public class Chef extends Utente {
 
-    public Chef(){
+    @SerializedName("luogo_lavoro")
+    private String luogo_lavoro;
+    @SerializedName("ricette")
+    private List<Ricetta> ricette;
+    @SerializedName("immagine_profilo")
+    private String immagine_profilo;
 
+    public Chef() {
     }
 
-    public Chef(String email, String nome, String cognome){
-        this.email = email;
-        this.nome = nome;
-        this.cognome = cognome;
+    public List<Ricetta> getRicette() {
+        return ricette;
     }
 
-    public String getEmail() {
-        return email;
+    public void setRicette(List<Ricetta> ricette) {
+        this.ricette = ricette;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public String getLuogo_lavoro() {
+        return luogo_lavoro;
     }
 
-    public String getNome() {
-        return nome;
+    public void setLuogo_lavoro(String luogo_lavoro) {
+        this.luogo_lavoro = luogo_lavoro;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public String getImmagine_profilo() {
+        return immagine_profilo;
     }
 
-    public String getCognome() {
-        return cognome;
+    public void setImmagine_profilo(String immagine_profilo) {
+        this.immagine_profilo = immagine_profilo;
     }
 
-    public void setCognome(String cognome) {
-        this.cognome = cognome;
-    }
 }

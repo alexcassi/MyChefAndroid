@@ -1,35 +1,33 @@
 package entità;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Ricetta {
 
-    Integer id;
-    String nome;
-    String ingredienti;
+    @SerializedName("id")
+    private Integer id;
+    @SerializedName("nome_ricetta")
+    private String nome_ricetta;
+    @SerializedName("ingredienti")
+    private String ingredienti;
+    @SerializedName("tempo_preparazione")
+    private String tempo_preparazione;
+    @SerializedName("prezzo")
+    private Double prezzo;
+    @SerializedName("chef")
+    private Chef chef;
+    @SerializedName("immagine_ricetta")
+    private String immagine_ricetta;
 
-    public Ricetta(){
-
+    public Ricetta() {
     }
 
-    public Ricetta(Integer id, String nome, String ingredienti){
-        this.id = id;
-        this.nome = nome;
-        this.ingredienti = ingredienti;
+    public String getNome_ricetta() {
+        return nome_ricetta;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNome_ricetta(String nome_ricetta) {
+        this.nome_ricetta = nome_ricetta;
     }
 
     public String getIngredienti() {
@@ -38,5 +36,45 @@ public class Ricetta {
 
     public void setIngredienti(String ingredienti) {
         this.ingredienti = ingredienti;
+    }
+
+    public String getTempo_preparazione() {
+        return tempo_preparazione;
+    }
+
+    public void setTempo_preparazione(String tempo_preparazione) {
+        this.tempo_preparazione = tempo_preparazione;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Double getPrezzo() {
+        return prezzo;
+    }
+
+    public void setPrezzo(Double prezzo) {
+        this.prezzo = prezzo;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public Chef getChef() {
+        return chef;
+    }
+
+    public void setChef(Chef chef) {
+        this.chef = chef;
+    }
+
+    public String getImmagine_ricetta() {
+        return immagine_ricetta;
+    }
+
+    public void setImmagine_ricetta(String immagine_ricetta) {
+        this.immagine_ricetta = immagine_ricetta;
     }
 }
