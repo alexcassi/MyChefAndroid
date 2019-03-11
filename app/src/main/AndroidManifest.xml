@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".TEST_RETROFIT"></activity>
-        <activity android:name=".TEST_DB" />
+        <activity android:name=".TEST_DB" ></activity>
         <activity android:name=".Profilo_cliente" />
         <activity android:name=".Profilo_chef" />
         <activity android:name=".Login" />

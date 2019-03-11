@@ -44,8 +44,13 @@ public class TEST_RETROFIT extends Activity {
 
                 StringBuilder builder = new StringBuilder();
                 for (Chef c: lista_chef) {
-                    builder.append(c.getNome());
-                    builder.append(", ");
+                    builder.append(c.getEmail());builder.append(", ");
+                    builder.append(c.getPassword());builder.append(", ");
+                    builder.append(c.getNome());builder.append(", ");
+                    builder.append(c.getCognome());builder.append(", ");
+                    builder.append(c.getLuogo_lavoro());builder.append(", ");
+                    builder.append(c.getImmagine_profilo());builder.append(", ");
+                    builder.append("\n");
                 }
 
                 tv.setText(builder.toString());
