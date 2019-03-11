@@ -6,34 +6,37 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 
+import java.security.KeyException;
 import java.sql.SQLException;
 import java.util.HashMap;
 
 import entità.Chef;
+import entità.Cliente;
 
-public class DbAdapterChef {
+public class DbAdapterCliente {
     @SuppressWarnings("unused")
-    private static final String LOG_TAG = DbAdapterChef.class.getSimpleName();
+    private static final String LOG_TAG = DbAdapterCliente.class.getSimpleName();
 
     private Context context;
     private SQLiteDatabase database;
     private DatabaseHelper dbHelper;
 
     // Database fields
-    private static final String DATABASE_TABLE = "chef";
+    private static final String DATABASE_TABLE = "cliente";
 
     public static final String KEY_EMAIL = "email";
     public static final String KEY_PASSWORD = "password";
     public static final String KEY_NOME = "nome";
     public static final String KEY_COGNOME = "cognome";
-    public static final String KEY_LUOGO_LAVORO = "luogo_lavoro";
-    public static final String KEY_IMMAGINE_PROFILO = "immagine_profilo";
+    public static final String KEY_provincia = "provincia";
+    public static final String KEY_comune = "comune";
+    public static final String KEY_indirizzo = "indirizzo";
 
-    public DbAdapterChef(Context context) {
+    public DbAdapterCliente(Context context) {
         this.context = context;
     }
 
-    public DbAdapterChef open() throws SQLException {
+    public DbAdapterCliente open() throws SQLException {
         dbHelper = new DatabaseHelper(context);
         database = dbHelper.getWritableDatabase();
         return this;
@@ -43,42 +46,43 @@ public class DbAdapterChef {
         dbHelper.close();
     }
 
-    private ContentValues createContentValues(String email, String password, String name, String surname, String place, String image ) {
+    private ContentValues createContentValues(String email, String password, String name, String surname, String provincia, String comune, String indirizzo ) {
         ContentValues values = new ContentValues();
         values.put( KEY_EMAIL, email);
         values.put( KEY_PASSWORD, password);
         values.put( KEY_NOME, name );
         values.put( KEY_COGNOME, surname );
-        values.put( KEY_LUOGO_LAVORO, place);
-        values.put( KEY_IMMAGINE_PROFILO, image);
+        values.put(KEY_provincia, provincia);
+        values.put( KEY_comune, comune);
+        values.put( KEY_indirizzo, indirizzo);
         return values;
     }
 
-    //create a chef
-    public long createChef(Chef c) {
-        ContentValues initialValues = createContentValues(c.getEmail(),c.getPassword(), c.getNome(), c.getCognome(), c.getLuogo_lavoro(), c.getImmagine_profilo());
+    //create
+    public long createCliente(Cliente c) {
+        ContentValues initialValues = createContentValues(c.getEmail(),c.getPassword(), c.getNome(), c.getCognome(), c.getProvincia(), c.getComune(), c.getIndirizzo());
         return database.insertOrThrow(DATABASE_TABLE, null, initialValues);
     }
 
-    public long createChef(String email, String password, String name, String surname, String place, String image) {
-        ContentValues initialValues = createContentValues(email, password, name, surname, place, image);
+    public long createCliente(String email, String password, String name, String surname, String provincia, String comune, String indirizzo) {
+        ContentValues initialValues = createContentValues(email, password, name, surname, provincia, comune, indirizzo);
         return database.insertOrThrow(DATABASE_TABLE, null, initialValues);
     }
 
-    //update a chef
-    public boolean updateChef( String email, String password, String name, String surname, String place, String image ) {
-        ContentValues updateValues = createContentValues(email, password, name, surname, place, image);
+    //update
+    public boolean updateCliente( String email, String password, String name, String surname, String provincia, String comune, String indirizzo ) {
+        ContentValues updateValues = createContentValues(email, password, name, surname, provincia, comune, indirizzo);
         return database.update(DATABASE_TABLE, updateValues, KEY_EMAIL + "=" + email,
                 null) > 0;
     }
-    //delete a chef
-    public boolean deleteChef(String email) {
+    //delete
+    public boolean deleteCliente(String email) {
         return database.delete(DATABASE_TABLE, KEY_EMAIL + "=" + email, null) > 0;
     }
 
-    //fetch all chefs
+    //fetch all
     public Cursor fetchAllChefs() {
-        return database.query(DATABASE_TABLE, new String[] { KEY_EMAIL, KEY_PASSWORD, KEY_NOME, KEY_COGNOME, KEY_LUOGO_LAVORO, KEY_IMMAGINE_PROFILO}, null, null, null, null, null);
+        return database.query(DATABASE_TABLE, new String[] { KEY_EMAIL, KEY_PASSWORD, KEY_NOME, KEY_COGNOME, KEY_provincia, KEY_comune, KEY_indirizzo}, null, null, null, null, null);
     }
 
     //fetch chefs filter by a string

@@ -10,30 +10,32 @@ import java.sql.SQLException;
 import java.util.HashMap;
 
 import entità.Chef;
+import entità.Ricetta;
 
-public class DbAdapterChef {
+public class DbAdapterRicetta {
     @SuppressWarnings("unused")
-    private static final String LOG_TAG = DbAdapterChef.class.getSimpleName();
+    private static final String LOG_TAG = DbAdapterRicetta.class.getSimpleName();
 
     private Context context;
     private SQLiteDatabase database;
     private DatabaseHelper dbHelper;
 
     // Database fields
-    private static final String DATABASE_TABLE = "chef";
+    private static final String DATABASE_TABLE = "ricetta";
 
-    public static final String KEY_EMAIL = "email";
-    public static final String KEY_PASSWORD = "password";
-    public static final String KEY_NOME = "nome";
-    public static final String KEY_COGNOME = "cognome";
-    public static final String KEY_LUOGO_LAVORO = "luogo_lavoro";
-    public static final String KEY_IMMAGINE_PROFILO = "immagine_profilo";
+    public static final String KEY_ID = "id";
+    public static final String KEY_nome_ricetta = "nome_ricetta";
+    public static final String KEY_ingredienti = "ingredienti";
+    public static final String KEY_tempo_preparazione = "tempo_preparazione";
+    public static final String KEY_prezzo = "prezzo";
+    public static final String KEY_chef = "chef";
+    public static final String KEY_immagine_ricetta = "immagine_ricetta";
 
-    public DbAdapterChef(Context context) {
+    public DbAdapterRicetta(Context context) {
         this.context = context;
     }
 
-    public DbAdapterChef open() throws SQLException {
+    public DbAdapterRicetta open() throws SQLException {
         dbHelper = new DatabaseHelper(context);
         database = dbHelper.getWritableDatabase();
         return this;
@@ -43,42 +45,43 @@ public class DbAdapterChef {
         dbHelper.close();
     }
 
-    private ContentValues createContentValues(String email, String password, String name, String surname, String place, String image ) {
+    private ContentValues createContentValues(Integer id, String nome_ricetta, String ingredienti, String tempo_preparazione, Double prezzo, String chef_email, String immagine_ricetta) {
         ContentValues values = new ContentValues();
-        values.put( KEY_EMAIL, email);
-        values.put( KEY_PASSWORD, password);
-        values.put( KEY_NOME, name );
-        values.put( KEY_COGNOME, surname );
-        values.put( KEY_LUOGO_LAVORO, place);
-        values.put( KEY_IMMAGINE_PROFILO, image);
+        values.put( KEY_ID, id);
+        values.put( KEY_nome_ricetta, nome_ricetta);
+        values.put( KEY_ingredienti, ingredienti );
+        values.put( KEY_tempo_preparazione, tempo_preparazione );
+        values.put( KEY_prezzo, prezzo);
+        values.put( KEY_chef, chef_email);
+        values.put( KEY_immagine_ricetta, immagine_ricetta);
         return values;
     }
 
-    //create a chef
-    public long createChef(Chef c) {
-        ContentValues initialValues = createContentValues(c.getEmail(),c.getPassword(), c.getNome(), c.getCognome(), c.getLuogo_lavoro(), c.getImmagine_profilo());
+    //create
+    public long createRicetta(Ricetta r) {
+        ContentValues initialValues = createContentValues(r.getId(),r.getNome_ricetta(), r.getIngredienti(), r.getTempo_preparazione(), r.getPrezzo(), r.getChef().getEmail(), r.getImmagine_ricetta());
         return database.insertOrThrow(DATABASE_TABLE, null, initialValues);
     }
 
-    public long createChef(String email, String password, String name, String surname, String place, String image) {
-        ContentValues initialValues = createContentValues(email, password, name, surname, place, image);
+    public long createRicetta(Integer id, String nome_ricetta, String ingredienti, String tempo_preparazione, Double prezzo, String chef_email, String immagine_ricetta) {
+        ContentValues initialValues = createContentValues(id, nome_ricetta, ingredienti, tempo_preparazione, prezzo, chef_email, immagine_ricetta);
         return database.insertOrThrow(DATABASE_TABLE, null, initialValues);
     }
 
-    //update a chef
-    public boolean updateChef( String email, String password, String name, String surname, String place, String image ) {
-        ContentValues updateValues = createContentValues(email, password, name, surname, place, image);
-        return database.update(DATABASE_TABLE, updateValues, KEY_EMAIL + "=" + email,
+    //update
+    public boolean updateRicetta( Integer id, String nome_ricetta, String ingredienti, String tempo_preparazione, Double prezzo, String chef_email, String immagine_ricetta ) {
+        ContentValues updateValues = createContentValues(id, nome_ricetta, ingredienti, tempo_preparazione, prezzo, chef_email, immagine_ricetta);
+        return database.update(DATABASE_TABLE, updateValues, KEY_ID + "=" + id,
                 null) > 0;
     }
-    //delete a chef
-    public boolean deleteChef(String email) {
-        return database.delete(DATABASE_TABLE, KEY_EMAIL + "=" + email, null) > 0;
+    //delete
+    public boolean deleteRicetta(Integer id) {
+        return database.delete(DATABASE_TABLE, KEY_ID + "=" + id, null) > 0;
     }
 
-    //fetch all chefs
-    public Cursor fetchAllChefs() {
-        return database.query(DATABASE_TABLE, new String[] { KEY_EMAIL, KEY_PASSWORD, KEY_NOME, KEY_COGNOME, KEY_LUOGO_LAVORO, KEY_IMMAGINE_PROFILO}, null, null, null, null, null);
+    //fetch all
+    public Cursor fetchAllRicette() {
+        return database.query(DATABASE_TABLE, new String[] { KEY_ID, KEY_nome_ricetta, KEY_ingredienti, KEY_tempo_preparazione, KEY_prezzo, KEY_chef, KEY_immagine_ricetta}, null, null, null, null, null);
     }
 
     //fetch chefs filter by a string
