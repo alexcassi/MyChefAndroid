@@ -24,7 +24,7 @@
         android:textStyle="bold|italic" />
 
     <EditText
-        android:id="@+id/indirizzo"
+        android:id="@+id/luogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/titolo"
@@ -32,7 +32,7 @@
         android:layout_marginTop="60dp"
         android:ems="11"
         android:gravity="center"
-        android:hint="EMAIL"
+        android:hint="LUOGO DI LAVORO"
         android:textColorHint="@android:color/background_dark" />
 
     <Button
@@ -40,7 +40,7 @@
         style="@android:style/Widget.Holo.Button"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/indirizzo"
+        android:layout_below="@+id/luogo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="180dp"
         android:background="@android:color/holo_orange_dark"
