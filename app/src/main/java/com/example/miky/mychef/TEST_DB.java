@@ -9,12 +9,11 @@ import android.widget.TextView;
 
 import java.sql.SQLException;
 
-import database.DbAdapter;
-import entità.Chef;
+import database.DbAdapterChef;
 
 public class TEST_DB extends Activity {
 
-    private DbAdapter adapter = new DbAdapter(this);
+    private DbAdapterChef adapter = new DbAdapterChef(this);
     private Cursor cursor;
     TextView demoTextView;
     Button show_button;
@@ -41,10 +40,13 @@ public class TEST_DB extends Activity {
                 }
                 cursor = adapter.fetchAllChefs();
                 while ( cursor.moveToNext() ) {
-                    String chefID = cursor.getString( cursor.getColumnIndex(DbAdapter.KEY_EMAIL) );
-                    String nome = cursor.getString( cursor.getColumnIndex(DbAdapter.KEY_NOME) );
-                    String cognome = cursor.getString( cursor.getColumnIndex(DbAdapter.KEY_COGNOME) );
-                    String text ="Email: " + chefID + ", Nome: " + nome + ", Cognome: " + cognome + "\n";
+                    String chefID = cursor.getString( cursor.getColumnIndex(DbAdapterChef.KEY_EMAIL) );
+                    String pass = cursor.getString( cursor.getColumnIndex(DbAdapterChef.KEY_PASSWORD));
+                    String nome = cursor.getString( cursor.getColumnIndex(DbAdapterChef.KEY_NOME) );
+                    String cognome = cursor.getString( cursor.getColumnIndex(DbAdapterChef.KEY_COGNOME) );
+                    String luogo = cursor.getString( cursor.getColumnIndex(DbAdapterChef.KEY_LUOGO_LAVORO) );
+                    String image = cursor.getString( cursor.getColumnIndex(DbAdapterChef.KEY_IMMAGINE_PROFILO) );
+                    String text = "Email: " + chefID + ", Pass: " + pass + ", Nome: " + nome + ", Cognome: " + cognome + ", Luogo di lavoro: " + luogo + ", Immagine: " + image + "\n";
                     demoTextView.setText(demoTextView.getText().toString() + text);
                 }
                 adapter.close();
@@ -66,7 +68,7 @@ public class TEST_DB extends Activity {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-                adapter.insertFast(3);
+                adapter.createChef("prova@", "p4ss", "Mario", "Rossi", "catania", "a.png");
                 adapter.close();
             }
         });
