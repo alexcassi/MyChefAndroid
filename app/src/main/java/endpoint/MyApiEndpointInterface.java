@@ -6,6 +6,8 @@ import entità.Chef;
 import entità.Cliente;
 import entità.Utente;
 import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
@@ -21,9 +23,10 @@ public interface MyApiEndpointInterface {
     @GET("/web-mychef/LoginClienteControllerAndroid")
     Call<Cliente> loginCliente(@Query("email") String email, @Query("password") String password);
 
+    @FormUrlEncoded
     @POST ("/web-mychef/SignUpChefControllerAndroid")
-    Call<String> signupChef(@Query("email") String email,@Query("password") String password,
-                            @Query("nome") String nome, @Query("cognome") String cognome,
-                            @Query("luogo_lavoro") String luogo_lavoro);
+    Call<String> signupChef(@Field("email") String email, @Field("password") String password,
+                            @Field("nome") String nome, @Field("cognome") String cognome,
+                            @Field("luogo_lavoro") String luogo_lavoro);
 
 }
