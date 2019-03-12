@@ -30,7 +30,8 @@
             android:layout_alignTop="@id/view"
             android:background="@android:color/holo_orange_dark"
             android:layout_marginBottom="80dp"
-            android:text="LOGIN" />
+            android:text="LOGIN"
+            android:layout_below="@id/titolo"/>
 
         <View
             android:id="@+id/view"
@@ -51,20 +52,21 @@
             android:layout_alignTop="@id/view"
             android:background="@android:color/holo_orange_dark"
             android:layout_marginBottom="80dp"
-            android:text="SIGNUP" />
+            android:text="SIGNUP"
+            android:layout_below="@id/titolo"/>
 
         <TextView
             android:id="@+id/titolo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="400dp"
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:text="Produced by Michela Biffi, Marco Cantella,Alessandro Cassinari, Riccardo De Gasperi e Gabriele Pasinati"
             android:textColor="@android:color/black"
             android:textSize="20sp"
             android:textStyle="bold|italic"
-            android:layout_below="@id/signup"/>
+            />
 
     </RelativeLayout>
 </ScrollView>

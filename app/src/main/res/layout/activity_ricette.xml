@@ -13,70 +13,83 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/nome_utente"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp"
-            android:ems="11"
-            android:gravity="center"
-            android:hint="PASSWORD"
-            android:inputType="textPassword"
-            android:textColorHint="@android:color/background_dark" />
-
-        <EditText
-            android:id="@+id/nome_utente"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/titolo"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="60dp"
-            android:ems="11"
-            android:gravity="center"
-            android:hint="NOME UTENTE"
-            android:textColorHint="@android:color/background_dark" />
-
         <TextView
-            android:id="@+id/titolo"
+            android:id="@+id/ricette"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="60dp"
             android:gravity="center"
-            android:text="LOGIN"
+            android:text="RICETTE"
             android:textColor="@android:color/holo_orange_dark"
             android:textSize="40sp"
             android:textStyle="bold|italic" />
 
+
+
+        <EditText
+            android:id="@+id/ingredienti"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nome_ricetta"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:ems="11"
+            android:gravity="center"
+            android:hint="INGREDIENTI"
+            android:textColorHint="@android:color/background_dark" />
+
+        <EditText
+            android:id="@+id/nome_ricetta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ricette"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
+            android:ems="11"
+            android:gravity="center"
+            android:hint="NOME RICETTA"
+            android:textColorHint="@android:color/background_dark" />
+
+        <EditText
+            android:id="@+id/tempo_preparazione"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ingredienti"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:ems="11"
+            android:gravity="center"
+            android:hint="TEMPO DI PREPARAZIONE"
+            android:textColorHint="@android:color/background_dark" />
+
+        <EditText
+            android:id="@+id/prezzo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tempo_preparazione"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:ems="11"
+            android:gravity="center"
+            android:hint="PREZZO"
+            android:textColorHint="@android:color/background_dark" />
+
         <Button
-            android:id="@+id/login"
+            android:id="@+id/aggiungi"
             style="@android:style/Widget.Holo.Button"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/password"
+            android:layout_below="@+id/prezzo"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="80dp"
             android:background="@android:color/holo_orange_dark"
             android:gravity="center"
-            android:text="PROFILO CHEF" />
+            android:text="AGGIUNGI RICETTA" />
 
-        <Button
-            android:id="@+id/chef"
-            style="@android:style/Widget.Holo.Button"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/login"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="80dp"
-            android:background="@android:color/holo_orange_dark"
-            android:gravity="center"
-            android:text="PROFILO CLIENTE" />
+
+
 
     </RelativeLayout>
 </ScrollView>
-
 
