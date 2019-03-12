@@ -21,4 +21,9 @@ public interface MyApiEndpointInterface {
     @GET("/web-mychef/LoginClienteControllerAndroid")
     Call<Cliente> loginCliente(@Query("email") String email, @Query("password") String password);
 
+    @POST ("/web-mychef/SignUpChefControllerAndroid")
+    Call<String> signupChef(@Query("email") String email,@Query("password") String password,
+                            @Query("nome") String nome, @Query("cognome") String cognome,
+                            @Query("luogo_lavoro") String luogo_lavoro);
+
 }

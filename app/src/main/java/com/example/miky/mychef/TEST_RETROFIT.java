@@ -105,5 +105,29 @@ public class TEST_RETROFIT extends Activity {
 
             }
         });
+
+        Button signup = findViewById(R.id.signupbutton);
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               Call<String> risposta = apiService.signupChef("ANDROID_TEST@TEST.it","testtest",
+                        "ANDREW","ANDROID","ANDROIDCITY");
+               risposta.enqueue(new Callback<String>() {
+                   @Override
+                   public void onResponse(Call<String> call, Response<String> response) {
+                       Log.w("la risposta", new Gson().toJson(response));
+                       Log.w("la risposta", response.toString());
+                       String messaggio = response.body().toString();
+                       Log.w("MESSAGGIO: ",messaggio);
+                   }
+
+                   @Override
+                   public void onFailure(Call<String> call, Throwable t) {
+                       Log.w("ERRORE","ERRORE");
+                   }
+               });
+            }
+        });
+
     }
 }
