@@ -71,34 +71,35 @@ public class TEST_RETROFIT extends Activity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Call<Utente> call_utente = apiService.login("marco95.cl@hotmail.it", "123123");
-                call_utente.enqueue(new Callback<Utente>() {
+                Call<Chef> call_utente = apiService.loginChef("marco95.cl@hotmail.it", "123123");
+                call_utente.enqueue(new Callback<Chef>() {
                     @Override
-                    public void onResponse(Call<Utente> call, Response<Utente> response) {
+                    public void onResponse(Call<Chef> call, Response<Chef> response) {
                         int statusCode = response.code();
-                        Utente c = response.body();
+                        Chef u = response.body();
                         Log.w("la risposta", new Gson().toJson(response));
                         Log.w("la risposta", response.toString());
 
                         StringBuilder builder = new StringBuilder();
-                        builder.append(c.getEmail());
+
+                        builder.append(u.getEmail());
                         builder.append(", ");
-                        builder.append(c.getPassword());
+                        builder.append(u.getPassword());
                         builder.append(", ");
-                        builder.append(c.getNome());
+                        builder.append(u.getNome());
                         builder.append(", ");
-                        builder.append(c.getCognome());
-                        /*builder.append(", ");
-                        builder.append(c.getLuogo_lavoro());
+                        builder.append(u.getCognome());
                         builder.append(", ");
-                        builder.append(c.getImmagine_profilo());
-                        builder.append("\n");*/
+                        builder.append(u.getLuogo_lavoro());
+                        builder.append(", ");
+                        builder.append(u.getImmagine_profilo());
+                        builder.append("\n");
 
                         tv.setText(builder.toString());
                     }
                         @Override
-                        public void onFailure(Call<Utente> call, Throwable t) {
-                            Log.w("errore", "errore");
+                        public void onFailure(Call<Chef> call, Throwable t) {
+                            tv.setText("Email o password errati");
                         }
                     });
 
