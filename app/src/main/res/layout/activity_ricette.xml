@@ -25,6 +25,17 @@
             android:textSize="40sp"
             android:textStyle="bold|italic" />
 
+        <Button
+            android:id="@+id/edit"
+            style="@android:style/Widget.Holo.Button"
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="70dp"
+            android:layout_toRightOf="@id/ricette"
+            android:background="@drawable/modifica2"
+            android:gravity="center" />
+
 
 
         <EditText

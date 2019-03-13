@@ -11,7 +11,8 @@
         android:roundIcon="@drawable/logo_nuovo2_android"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".modifica_profilo_cliente"></activity>
+        <activity android:name=".modifica_ricette"></activity>
+        <activity android:name=".modifica_profilo_cliente" />
         <activity android:name=".modifica_profilo_chef" />
         <activity android:name=".TEST_RETROFIT" />
         <activity android:name=".TEST_DB" />
