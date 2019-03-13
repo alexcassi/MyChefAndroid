@@ -1,6 +1,7 @@
 package endpoint;
 
 import java.util.List;
+import java.util.TreeMap;
 
 import entità.Chef;
 import entità.Cliente;
@@ -17,11 +18,8 @@ public interface MyApiEndpointInterface {
     @GET("/web-mychef/ListaChefServletAndroid")
     Call<List<Chef>> getChefs();
 
-    @GET("/web-mychef/LoginChefControllerAndroid")
-    Call<Chef> loginChef(@Query("email") String email, @Query("password") String password);
-
-    @GET("/web-mychef/LoginClienteControllerAndroid")
-    Call<Cliente> loginCliente(@Query("email") String email, @Query("password") String password);
+    @GET("/web-mychef/LoginControllerAndroid")
+    Call<TreeMap<String,String>> loginChef(@Query("email") String email, @Query("password") String password);
 
     @FormUrlEncoded
     @POST ("/web-mychef/SignUpChefControllerAndroid")

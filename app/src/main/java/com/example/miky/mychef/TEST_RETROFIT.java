@@ -10,9 +10,11 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 
 import java.util.List;
+import java.util.TreeMap;
 
 import endpoint.MyApiEndpointInterface;
 import entità.Chef;
+import entità.Cliente;
 import entità.Utente;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -71,38 +73,77 @@ public class TEST_RETROFIT extends Activity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Call<Chef> call_utente = apiService.loginChef("marco95.cl@hotmail.it", "123123");
-                call_utente.enqueue(new Callback<Chef>() {
+                Call<TreeMap<String,String>> call_utente = apiService.loginChef("g.keplero@astro.com", "astronomo");
+                call_utente.enqueue(new Callback<TreeMap<String,String>>() {
                     @Override
-                    public void onResponse(Call<Chef> call, Response<Chef> response) {
+                    public void onResponse(Call<TreeMap<String,String>> call, Response<TreeMap<String,String>> response) {
                         int statusCode = response.code();
-                        Chef u = response.body();
+                        TreeMap<String,String> u = response.body();
+                        StringBuilder builder = new StringBuilder();
                         Log.w("la risposta", new Gson().toJson(response));
                         Log.w("la risposta", response.toString());
 
-                        StringBuilder builder = new StringBuilder();
+                        //caso chef
+                        if(u.containsKey("luogo_lavoro")){
+                            Chef chef = new Chef();
+                            chef.setEmail(u.get("email"));
+                            chef.setNome(u.get("nome"));
+                            chef.setCognome(u.get("cognome"));
+                            chef.setPassword(u.get("password"));
+                            chef.setLuogo_lavoro(u.get("luogo_lavoro"));
+                            chef.setImmagine_profilo(u.get("immagine_profilo"));
 
-                        builder.append(u.getEmail());
-                        builder.append(", ");
-                        builder.append(u.getPassword());
-                        builder.append(", ");
-                        builder.append(u.getNome());
-                        builder.append(", ");
-                        builder.append(u.getCognome());
-                        builder.append(", ");
-                        builder.append(u.getLuogo_lavoro());
-                        builder.append(", ");
-                        builder.append(u.getImmagine_profilo());
-                        builder.append("\n");
+                            builder.append(chef.getEmail());
+                            builder.append(", ");
+                            builder.append(chef.getPassword());
+                            builder.append(", ");
+                            builder.append(chef.getNome());
+                            builder.append(", ");
+                            builder.append(chef.getCognome());
+                            builder.append(", ");
+                            builder.append(chef.getLuogo_lavoro());
+                            builder.append(", ");
+                            builder.append(chef.getImmagine_profilo());
+                            builder.append("\n");
+                        } else {
+                            //caso cliente
+                            if (u.containsKey("indirizzo")) {
+                                Cliente cliente = new Cliente();
+                                cliente.setEmail(u.get("email"));
+                                cliente.setNome(u.get("nome"));
+                                cliente.setCognome(u.get("cognome"));
+                                cliente.setPassword(u.get("password"));
+                                cliente.setProvincia(u.get("provincia"));
+                                cliente.setComune(u.get("comune"));
+                                cliente.setIndirizzo(u.get("indirizzo"));
+
+                                builder.append(cliente.getEmail());
+                                builder.append(", ");
+                                builder.append(cliente.getPassword());
+                                builder.append(", ");
+                                builder.append(cliente.getNome());
+                                builder.append(", ");
+                                builder.append(cliente.getCognome());
+                                builder.append(", ");
+                                builder.append(cliente.getProvincia());
+                                builder.append(", ");
+                                builder.append(cliente.getComune());
+                                builder.append(", ");
+                                builder.append(cliente.getIndirizzo());
+                                builder.append("\n");
+                            } else {
+                                //caso login fallito
+                                builder.append(u.get("messaggio"));
+                            }
+                        }
 
                         tv.setText(builder.toString());
                     }
                         @Override
-                        public void onFailure(Call<Chef> call, Throwable t) {
-                            tv.setText("Email o password errati");
+                        public void onFailure(Call<TreeMap<String,String>> call, Throwable t) {
+                            tv.setText("Errore interno. Riprovare. Se persiste contattarci");
                         }
                     });
-
             }
         });
 

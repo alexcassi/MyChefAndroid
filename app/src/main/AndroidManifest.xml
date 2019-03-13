@@ -14,7 +14,7 @@
         <activity android:name=".modifica_ricette"></activity>
         <activity android:name=".modifica_profilo_cliente" />
         <activity android:name=".modifica_profilo_chef" />
-        <activity android:name=".TEST_RETROFIT" />
+        <activity android:name=".TEST_RETROFIT" ></activity>
         <activity android:name=".TEST_DB" />
         <activity android:name=".Profilo_cliente" />
         <activity android:name=".Profilo_chef" />
