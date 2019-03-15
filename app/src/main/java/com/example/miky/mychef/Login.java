@@ -56,7 +56,7 @@ public class Login extends Activity {
 
                         //caso chef
                         if(risposta.containsKey("luogo_lavoro")){
-                            Sessione.login(getApplicationContext(),risposta.get("email"),risposta.get("password"));
+                            Sessione.loginChef(getApplicationContext(),risposta.get("email"),risposta.get("password"));
                             DbAdapterChef adapter_chef = new DbAdapterChef(getApplicationContext());
                             try {
                                 adapter_chef.open();
@@ -70,7 +70,7 @@ public class Login extends Activity {
                         } else {
                             //caso cliente
                             if (risposta.containsKey("indirizzo")) {
-                                Sessione.login(getApplicationContext(),risposta.get("email"),risposta.get("password"));
+                                Sessione.loginCliente(getApplicationContext(),risposta.get("email"),risposta.get("password"));
                                 DbAdapterCliente adapter_cliente = new DbAdapterCliente(getApplicationContext());
                                 try {
                                     adapter_cliente.open();

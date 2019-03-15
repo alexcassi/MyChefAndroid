@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Button
+        android:id="@+id/login"
+        style="@android:style/Widget.Holo.Button"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/view"
+        android:layout_alignTop="@id/view"
+        android:background="@android:color/holo_orange_dark"
+        android:text="LOGIN" />
+
+    <View
+        android:id="@+id/view"
+        android:visibility="visible"
+        android:layout_height="0dip"
+        android:layout_width="50dip"
+        android:background="#FFFFFF"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"/>
+
+    <Button
+        android:id="@+id/signup"
+        style="@android:style/Widget.Holo.Button"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/view"
+        android:layout_alignTop="@id/view"
+        android:background="@android:color/holo_orange_dark"
+        android:text="SIGNUP" />
+</RelativeLayout>

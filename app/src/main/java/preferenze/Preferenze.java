@@ -13,7 +13,7 @@ public class Preferenze {
         SharedPreferences settings = context.getSharedPreferences(PREF_FILE, 0);
         SharedPreferences.Editor editor = settings.edit();
         editor.putString(key, value);
-        editor.apply();
+        editor.commit();
     }
     protected static String leggiStringa(Context context, String key){
         SharedPreferences settings = context.getSharedPreferences(PREF_FILE, 0);
@@ -24,6 +24,7 @@ public class Preferenze {
         SharedPreferences settings = context.getSharedPreferences(PREF_FILE, 0);
         SharedPreferences.Editor editor = settings.edit();
         editor.remove(key);
+        editor.commit();
     }
 
     protected static void eliminaPreferenze(Context context){

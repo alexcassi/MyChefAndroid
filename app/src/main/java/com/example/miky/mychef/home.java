@@ -3,36 +3,58 @@ package com.example.miky.mychef;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.widget.Button;
 
-public class home extends Activity {
+import preferenze.Preferenze;
+import preferenze.Sessione;
+
+public class home extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-
-
-        Button avviaSchermata = (Button)findViewById(R.id.login);
-        avviaSchermata.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent secondIntent = new Intent(home.this,Login.class);
-                startActivity(secondIntent);
+        if (Sessione.isCliente(getApplicationContext())){
+            getSupportFragmentManager().beginTransaction().add(R.id.frame_home,
+                    new FRAG_home_cliente()).commit();
+        } else {
+            if (Sessione.isChef(getApplicationContext())){
+                getSupportFragmentManager().beginTransaction().add(R.id.frame_home,
+                        new FRAG_home_chef()).commit();
+            } else {
+                getSupportFragmentManager().beginTransaction().add(R.id.frame_home,
+                        new FRAG_home_not_logged()).commit();
             }
-        });
-
-
-
-        Button avviaSchermata1 = (Button)findViewById(R.id.signup);
-        avviaSchermata1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent secondIntent = new Intent(home.this,SignUp.class);
-                startActivity(secondIntent);
-            }
-        });
+        }
     }
+
+    public void goToLogin () {
+        Intent intent = new Intent(home.this, Login.class);
+        startActivity(intent);
+    }
+
+    public void goToSignup () {
+        Intent intent = new Intent(home.this, SignUp.class);
+        startActivity(intent);
+    }
+
+    public void goToLogout () {
+        Sessione.logout(getApplicationContext());
+    }
+
+    public void goToCercaChef(){
+
+    }
+
+    public void goToRicette(){
+        Intent intent = new Intent(home.this, ricette.class);
+        startActivity(intent);
+    }
+
 }
+
