@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteStatement;
 
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.TreeMap;
 
 import entità.Chef;
 
@@ -23,7 +24,6 @@ public class DbAdapterChef {
     private static final String DATABASE_TABLE = "chef";
 
     public static final String KEY_EMAIL = "email";
-    public static final String KEY_PASSWORD = "password";
     public static final String KEY_NOME = "nome";
     public static final String KEY_COGNOME = "cognome";
     public static final String KEY_LUOGO_LAVORO = "luogo_lavoro";
@@ -43,10 +43,9 @@ public class DbAdapterChef {
         dbHelper.close();
     }
 
-    private ContentValues createContentValues(String email, String password, String name, String surname, String place, String image ) {
+    private ContentValues createContentValues(String email, String name, String surname, String place, String image ) {
         ContentValues values = new ContentValues();
         values.put( KEY_EMAIL, email);
-        values.put( KEY_PASSWORD, password);
         values.put( KEY_NOME, name );
         values.put( KEY_COGNOME, surname );
         values.put( KEY_LUOGO_LAVORO, place);
@@ -56,30 +55,63 @@ public class DbAdapterChef {
 
     //create a chef
     public long createChef(Chef c) {
-        ContentValues initialValues = createContentValues(c.getEmail(),c.getPassword(), c.getNome(), c.getCognome(), c.getLuogo_lavoro(), c.getImmagine_profilo());
+        ContentValues initialValues = createContentValues(c.getEmail(), c.getNome(), c.getCognome(), c.getLuogo_lavoro(), c.getImmagine_profilo());
         return database.insertOrThrow(DATABASE_TABLE, null, initialValues);
     }
-
-    public long createChef(String email, String password, String name, String surname, String place, String image) {
-        ContentValues initialValues = createContentValues(email, password, name, surname, place, image);
+    public long createChef(String email, String name, String surname, String place, String image) {
+        ContentValues initialValues = createContentValues(email, name, surname, place, image);
+        return database.insertOrThrow(DATABASE_TABLE, null, initialValues);
+    }
+    public long createChef(TreeMap<String,String> c) {
+        ContentValues initialValues = createContentValues(c.get("email"), c.get("nome"), c.get("cognome"), c.get("luogo_lavoro"), c.get("immagine_profilo"));
         return database.insertOrThrow(DATABASE_TABLE, null, initialValues);
     }
 
     //update a chef
-    public boolean updateChef( String email, String password, String name, String surname, String place, String image ) {
-        ContentValues updateValues = createContentValues(email, password, name, surname, place, image);
-        return database.update(DATABASE_TABLE, updateValues, KEY_EMAIL + "=" + email,
-                null) > 0;
+    public boolean updateChef( String email, String name, String surname, String place, String image ) {
+        ContentValues updateValues = createContentValues(email, name, surname, place, image);
+        return database.update(DATABASE_TABLE, updateValues, KEY_EMAIL + "= ?",
+                new String[]{email}) > 0;
     }
+    public boolean updateChef( TreeMap<String,String> c ) {
+        ContentValues updateValues = createContentValues(c.get("email"), c.get("nome"), c.get("cognome"), c.get("luogo_lavoro"), c.get("immagine_profilo"));
+        String email = c.get("email");
+        return database.update(DATABASE_TABLE, updateValues, KEY_EMAIL + "= ?",
+                new String[]{email}) > 0;
+    }
+
     //delete a chef
     public boolean deleteChef(String email) {
-        return database.delete(DATABASE_TABLE, KEY_EMAIL + "=" + email, null) > 0;
+        return database.delete(DATABASE_TABLE, KEY_EMAIL + "= ?", new String[]{email}) > 0;
     }
 
     //fetch all chefs
     public Cursor fetchAllChefs() {
-        return database.query(DATABASE_TABLE, new String[] { KEY_EMAIL, KEY_PASSWORD, KEY_NOME, KEY_COGNOME, KEY_LUOGO_LAVORO, KEY_IMMAGINE_PROFILO}, null, null, null, null, null);
+        return database.query(DATABASE_TABLE, new String[] { KEY_EMAIL, KEY_NOME, KEY_COGNOME, KEY_LUOGO_LAVORO, KEY_IMMAGINE_PROFILO}, null, null, null, null, null);
     }
+
+    public boolean containsChef(String email) {
+        String selectQuery = "SELECT * FROM chef where email='"+email+"'";
+        Cursor cursor = database.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            cursor.close();
+            return true;
+        }
+        cursor.close();
+        return false;
+    }
+
+    /*public HashMap getChef(String email) {
+        HashMap wordList = new HashMap();
+        String selectQuery = "SELECT * FROM chef where email='"+email+"'";
+        Cursor cursor = database.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                wordList.put("email",cursor.getString(1));
+                //...
+            } while (cursor.moveToNext());
+        }
+    }*/
 
     //fetch chefs filter by a string
     /*public Cursor fetchChefsByFilter(String filter) {
@@ -89,21 +121,6 @@ public class DbAdapterChef {
                 null, null);
         return mCursor;
     }*/
-
-    /*
-    public HashMap getChefInfo(String email) {
-        HashMap wordList = new HashMap();
-        SQLiteDatabase database = dbHelper.getReadableDatabase();
-        String selectQuery = "SELECT * FROM chef where email='"+email+"'";
-        Cursor cursor = database.rawQuery(selectQuery, null);
-        if (cursor.moveToFirst()) {
-            do {
-                wordList.put("name", cursor.getString(1));
-            } while (cursor.moveToNext());
-        }
-        return wordList;
-    }*/
-
 
     /*
     public void insertFast(int insertCount) {

@@ -1,17 +1,14 @@
-package endpoint;
+package servizi_web;
 
 import java.util.List;
 import java.util.TreeMap;
 
 import entità.Chef;
-import entità.Cliente;
-import entità.Utente;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface MyApiEndpointInterface {
@@ -19,7 +16,7 @@ public interface MyApiEndpointInterface {
     Call<List<Chef>> getChefs();
 
     @GET("/web-mychef/LoginControllerAndroid")
-    Call<TreeMap<String,String>> loginChef(@Query("email") String email, @Query("password") String password);
+    Call<TreeMap<String,String>> login(@Query("email") String email, @Query("password") String password);
 
     @FormUrlEncoded
     @POST ("/web-mychef/SignUpChefControllerAndroid")

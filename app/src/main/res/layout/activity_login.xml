@@ -13,7 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-
         <EditText
             android:id="@+id/password"
             android:layout_width="wrap_content"
@@ -61,20 +60,7 @@
             android:layout_marginTop="80dp"
             android:background="@android:color/holo_orange_dark"
             android:gravity="center"
-            android:text="PROFILO CHEF" />
-
-        <Button
-            android:id="@+id/chef"
-            style="@android:style/Widget.Holo.Button"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/login"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="80dp"
-            android:background="@android:color/holo_orange_dark"
-            android:gravity="center"
-            android:text="PROFILO CLIENTE" />
+            android:text="LOGIN" />
 
     </RelativeLayout>
 </ScrollView>

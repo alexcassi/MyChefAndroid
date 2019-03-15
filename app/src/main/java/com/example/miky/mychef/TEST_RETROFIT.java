@@ -12,18 +12,16 @@ import com.google.gson.Gson;
 import java.util.List;
 import java.util.TreeMap;
 
-import endpoint.MyApiEndpointInterface;
 import entità.Chef;
 import entità.Cliente;
-import entità.Utente;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import servizi_web.MyApiEndpointInterface;
+import servizi_web.ServerUtility;
+
 public class TEST_RETROFIT extends Activity {
 
-    public static final String BASE_URL = "http://10.0.2.2:8080/";
     TextView tv;
 
     @Override
@@ -32,12 +30,7 @@ public class TEST_RETROFIT extends Activity {
         setContentView(R.layout.activity_test__retrofit);
         tv = findViewById(R.id.tv1);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        final MyApiEndpointInterface apiService = retrofit.create(MyApiEndpointInterface.class);
+        final MyApiEndpointInterface apiService = ServerUtility.getApiService();
 
         Call<List<Chef>> call = apiService.getChefs();
 
@@ -52,7 +45,6 @@ public class TEST_RETROFIT extends Activity {
                 StringBuilder builder = new StringBuilder();
                 for (Chef c: lista_chef) {
                     builder.append(c.getEmail());builder.append(", ");
-                    builder.append(c.getPassword());builder.append(", ");
                     builder.append(c.getNome());builder.append(", ");
                     builder.append(c.getCognome());builder.append(", ");
                     builder.append(c.getLuogo_lavoro());builder.append(", ");
@@ -73,7 +65,7 @@ public class TEST_RETROFIT extends Activity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Call<TreeMap<String,String>> call_utente = apiService.loginChef("g.keplero@astro.com", "astronomo");
+                Call<TreeMap<String,String>> call_utente = apiService.login("g.keplero@astro.com", "astronomo");
                 call_utente.enqueue(new Callback<TreeMap<String,String>>() {
                     @Override
                     public void onResponse(Call<TreeMap<String,String>> call, Response<TreeMap<String,String>> response) {
@@ -89,13 +81,11 @@ public class TEST_RETROFIT extends Activity {
                             chef.setEmail(u.get("email"));
                             chef.setNome(u.get("nome"));
                             chef.setCognome(u.get("cognome"));
-                            chef.setPassword(u.get("password"));
                             chef.setLuogo_lavoro(u.get("luogo_lavoro"));
                             chef.setImmagine_profilo(u.get("immagine_profilo"));
 
                             builder.append(chef.getEmail());
                             builder.append(", ");
-                            builder.append(chef.getPassword());
                             builder.append(", ");
                             builder.append(chef.getNome());
                             builder.append(", ");
@@ -112,14 +102,12 @@ public class TEST_RETROFIT extends Activity {
                                 cliente.setEmail(u.get("email"));
                                 cliente.setNome(u.get("nome"));
                                 cliente.setCognome(u.get("cognome"));
-                                cliente.setPassword(u.get("password"));
                                 cliente.setProvincia(u.get("provincia"));
                                 cliente.setComune(u.get("comune"));
                                 cliente.setIndirizzo(u.get("indirizzo"));
 
                                 builder.append(cliente.getEmail());
                                 builder.append(", ");
-                                builder.append(cliente.getPassword());
                                 builder.append(", ");
                                 builder.append(cliente.getNome());
                                 builder.append(", ");

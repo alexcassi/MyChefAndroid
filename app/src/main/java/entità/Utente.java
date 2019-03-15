@@ -6,8 +6,6 @@ public class Utente {
 
     @SerializedName("email")
     private String email;
-    @SerializedName("password")
-    private String password;
     @SerializedName("nome")
     private String nome;
     @SerializedName("cognome")
@@ -22,14 +20,6 @@ public class Utente {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getNome() {

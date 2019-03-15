@@ -15,10 +15,11 @@
         <activity android:name=".modifica_profilo_cliente" />
         <activity android:name=".modifica_profilo_chef" />
         <activity android:name=".TEST_RETROFIT" ></activity>
-        <activity android:name=".TEST_DB" />
+        <activity android:name=".TEST_DB" ></activity>
         <activity android:name=".Profilo_cliente" />
         <activity android:name=".Profilo_chef" />
         <activity android:name=".Login" />
+        <activity android:name=".SignUp" />
         <activity android:name=".home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,7 +27,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignUp" />
     </application>
 
 </manifest>

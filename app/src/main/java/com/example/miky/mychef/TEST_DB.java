@@ -41,12 +41,11 @@ public class TEST_DB extends Activity {
                 cursor = adapter.fetchAllChefs();
                 while ( cursor.moveToNext() ) {
                     String chefID = cursor.getString( cursor.getColumnIndex(DbAdapterChef.KEY_EMAIL) );
-                    String pass = cursor.getString( cursor.getColumnIndex(DbAdapterChef.KEY_PASSWORD));
                     String nome = cursor.getString( cursor.getColumnIndex(DbAdapterChef.KEY_NOME) );
                     String cognome = cursor.getString( cursor.getColumnIndex(DbAdapterChef.KEY_COGNOME) );
                     String luogo = cursor.getString( cursor.getColumnIndex(DbAdapterChef.KEY_LUOGO_LAVORO) );
                     String image = cursor.getString( cursor.getColumnIndex(DbAdapterChef.KEY_IMMAGINE_PROFILO) );
-                    String text = "Email: " + chefID + ", Pass: " + pass + ", Nome: " + nome + ", Cognome: " + cognome + ", Luogo di lavoro: " + luogo + ", Immagine: " + image + "\n";
+                    String text = "Email: " + chefID + ", Nome: " + nome + ", Cognome: " + cognome + ", Luogo di lavoro: " + luogo + ", Immagine: " + image + "\n";
                     demoTextView.setText(demoTextView.getText().toString() + text);
                 }
                 adapter.close();
@@ -68,9 +67,12 @@ public class TEST_DB extends Activity {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-                adapter.createChef("prova@", "p4ss", "Mario", "Rossi", "catania", "a.png");
+                if(!adapter.containsChef("prova@")) {
+                    adapter.createChef("prova@", "Mario", "Rossi", "catania", "a.png");
+                }
                 adapter.close();
             }
         });
     }
+
 }
