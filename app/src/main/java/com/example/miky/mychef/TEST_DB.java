@@ -67,8 +67,8 @@ public class TEST_DB extends Activity {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-                if(!adapter.containsChef("prova@")) {
-                    adapter.createChef("prova@", "Mario", "Rossi", "catania", "a.png");
+                if(!adapter.containsChef("lista_ricette@")) {
+                    adapter.createChef("lista_ricette@", "Mario", "Rossi", "catania", "a.png");
                 }
                 adapter.close();
             }

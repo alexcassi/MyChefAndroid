@@ -11,12 +11,12 @@
         android:roundIcon="@drawable/logo_nuovo2_android"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Dettagli_ricetta"></activity>
-        <activity android:name=".modifica_ricette"></activity>
+        <activity android:name=".Ricette"></activity>
+        <activity android:name=".Dettagli_ricetta" />
+        <activity android:name=".modifica_ricette" />
         <activity android:name=".modifica_profilo_cliente" />
         <activity android:name=".modifica_profilo_chef" />
-        <activity android:name=".TEST_RETROFIT" ></activity>
-        <activity android:name=".TEST_DB" ></activity>
+        <activity android:name=".TEST_DB" />
         <activity android:name=".Profilo_cliente" />
         <activity android:name=".Profilo_chef" />
         <activity android:name=".Login" />

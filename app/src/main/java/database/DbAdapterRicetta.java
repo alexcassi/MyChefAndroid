@@ -2,15 +2,18 @@ package database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.List;
 
 import entità.Chef;
 import entità.Ricetta;
+import preferenze.Sessione;
 
 public class DbAdapterRicetta {
     @SuppressWarnings("unused")
@@ -71,12 +74,23 @@ public class DbAdapterRicetta {
     //update
     public boolean updateRicetta( Integer id, String nome_ricetta, String ingredienti, String tempo_preparazione, Double prezzo, String chef_email, String immagine_ricetta ) {
         ContentValues updateValues = createContentValues(id, nome_ricetta, ingredienti, tempo_preparazione, prezzo, chef_email, immagine_ricetta);
-        return database.update(DATABASE_TABLE, updateValues, KEY_ID + "=" + id,
-                null) > 0;
+        return database.update(DATABASE_TABLE, updateValues, KEY_ID + "= ?",
+                new String[]{id.toString()}) > 0;
     }
+    public void updateOrCreateRicette(List<Ricetta> list, String email_chef) {
+        for (Ricetta r : list) {
+            ContentValues updateValues = createContentValues(r.getId(), r.getNome_ricetta(), r.getIngredienti(), r.getTempo_preparazione(), r.getPrezzo(), email_chef, r.getImmagine_ricetta());
+            String id_str = r.getId().toString();
+            if (!((database.update(DATABASE_TABLE, updateValues, KEY_ID + "= ?",
+                    new String[]{id_str}))>0)){
+                database.insertOrThrow(DATABASE_TABLE, null, updateValues);
+            }
+        }
+    }
+
     //delete
     public boolean deleteRicetta(Integer id) {
-        return database.delete(DATABASE_TABLE, KEY_ID + "=" + id, null) > 0;
+        return database.delete(DATABASE_TABLE, KEY_ID + "= ?", new String[]{id.toString()}) > 0;
     }
 
     //fetch all

@@ -49,7 +49,7 @@ public class home extends FragmentActivity {
     }
 
     public void goToRicette(){
-        Intent intent = new Intent(home.this, Dettagli_ricetta.class);
+        Intent intent = new Intent(home.this, Ricette.class);
         startActivity(intent);
     }
 
