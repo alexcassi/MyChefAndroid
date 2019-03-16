@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentActivity;
 
 import preferenze.Sessione;
 
-public class home extends FragmentActivity {
+public class Home extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,12 +28,12 @@ public class home extends FragmentActivity {
     }
 
     public void goToLogin () {
-        Intent intent = new Intent(home.this, Login.class);
+        Intent intent = new Intent(Home.this, Login.class);
         startActivity(intent);
     }
 
     public void goToSignup () {
-        Intent intent = new Intent(home.this, SignUp.class);
+        Intent intent = new Intent(Home.this, SignUp.class);
         startActivity(intent);
     }
 
@@ -49,7 +49,7 @@ public class home extends FragmentActivity {
     }
 
     public void goToRicette(){
-        Intent intent = new Intent(home.this, Ricette.class);
+        Intent intent = new Intent(Home.this, Ricette.class);
         startActivity(intent);
     }
 

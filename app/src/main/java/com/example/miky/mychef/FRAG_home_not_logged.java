@@ -28,8 +28,8 @@ public class FRAG_home_not_logged extends Fragment {
         avviaSchermataLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentActivity fragmentActivity = (home)getActivity();
-                ((home) fragmentActivity).goToLogin();
+                FragmentActivity fragmentActivity = (Home)getActivity();
+                ((Home) fragmentActivity).goToLogin();
             }
         });
 
@@ -37,8 +37,8 @@ public class FRAG_home_not_logged extends Fragment {
         avviaSchermataSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentActivity fragmentActivity = (home)getActivity();
-                ((home) fragmentActivity).goToSignup();
+                FragmentActivity fragmentActivity = (Home)getActivity();
+                ((Home) fragmentActivity).goToSignup();
             }
         });
 

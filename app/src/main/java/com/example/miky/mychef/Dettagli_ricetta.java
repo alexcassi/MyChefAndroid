@@ -16,6 +16,7 @@ import servizi_web.ServerUtility;
 
 public class Dettagli_ricetta extends Activity {
 
+    Integer id;
     Button avviaSchermataEdit;
     Button avviaSchermataRicette;
 
@@ -24,11 +25,14 @@ public class Dettagli_ricetta extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dettagli_ricetta);
 
+        id = getIntent().getIntExtra("id_ricetta",-1);
+
         avviaSchermataEdit = (Button)findViewById(R.id.edit);
         avviaSchermataEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Dettagli_ricetta.this,modifica_ricette.class);
+                Intent intent = new Intent(Dettagli_ricetta.this, Modifica_ricetta.class);
+                intent.putExtra("id_ricetta",id);
                 startActivity(intent);
             }
         });
@@ -41,7 +45,6 @@ public class Dettagli_ricetta extends Activity {
             }
         });
 
-        Integer id = getIntent().getIntExtra("id_ricetta",-1);
         Call<Ricetta> ricettaCall = ServerUtility.getApiService()
                 .getRicetta(id);
         ricettaCall.enqueue(new Callback<Ricetta>() {

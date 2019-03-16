@@ -8,7 +8,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@drawable/layer1"
     android:fitsSystemWindows="true"
-    tools:context=".home">
+    tools:context=".Home">
 
     <RelativeLayout
         android:layout_width="match_parent"

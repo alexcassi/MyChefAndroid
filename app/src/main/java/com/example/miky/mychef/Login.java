@@ -1,26 +1,18 @@
 package com.example.miky.mychef;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-
 import java.sql.SQLException;
-import java.util.List;
 import java.util.TreeMap;
 
 import database.DbAdapterChef;
 import database.DbAdapterCliente;
-import entità.Chef;
-import entità.Cliente;
-import preferenze.Preferenze;
 import preferenze.Sessione;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -96,7 +88,7 @@ public class Login extends Activity {
                             }
                         }
                         if (login_avvenuto){
-                            Intent intent = new Intent(Login.this, home.class);
+                            Intent intent = new Intent(Login.this, Home.class);
                             startActivity(intent);
                         }
                     }

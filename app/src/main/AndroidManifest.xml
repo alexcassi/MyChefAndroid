@@ -13,15 +13,15 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Ricette"></activity>
         <activity android:name=".Dettagli_ricetta" />
-        <activity android:name=".modifica_ricette" />
-        <activity android:name=".modifica_profilo_cliente" />
-        <activity android:name=".modifica_profilo_chef" />
+        <activity android:name=".Modifica_ricetta" />
+        <activity android:name=".Modifica_profilo_cliente" />
+        <activity android:name=".Modifica_profilo_chef" />
         <activity android:name=".TEST_DB" />
         <activity android:name=".Profilo_cliente" />
         <activity android:name=".Profilo_chef" />
         <activity android:name=".Login" />
         <activity android:name=".SignUp" />
-        <activity android:name=".home">
+        <activity android:name=".Home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

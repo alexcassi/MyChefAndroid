@@ -33,4 +33,12 @@ public interface MyApiEndpointInterface {
     @GET("/web-mychef/DettagliRicettaServletAndroid")
     Call<Ricetta> getRicetta(@Query("id_ricetta") Integer id_ricetta);
 
+    @FormUrlEncoded
+    @POST("/web-mychef/AggiornaRicettaControllerAndroid")
+    Call<String> updateRicetta(@Field("nome_ricetta") String nome_ricetta,
+                               @Field("ingredienti") String ingredienti,
+                               @Field("tempo_preparazione") String tempo_preparazione,
+                               @Field("prezzo") Double prezzo,
+                               @Field("id") Integer id);
+
 }

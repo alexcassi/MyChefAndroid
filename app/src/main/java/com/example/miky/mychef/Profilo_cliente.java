@@ -17,7 +17,7 @@ public class Profilo_cliente extends Activity {
         avviaSchermata.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent secondIntent = new Intent(Profilo_cliente.this,home.class);
+                Intent secondIntent = new Intent(Profilo_cliente.this, Home.class);
                 startActivity(secondIntent);
             }
         });

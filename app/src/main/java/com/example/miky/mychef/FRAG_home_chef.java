@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import database.DbAdapterChef;
 import preferenze.Sessione;
 
 public class FRAG_home_chef extends Fragment {
@@ -35,8 +34,8 @@ public class FRAG_home_chef extends Fragment {
         avviaSchermataRicette.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentActivity fragmentActivity = (home)getActivity();
-                ((home) fragmentActivity).goToRicette();
+                FragmentActivity fragmentActivity = (Home)getActivity();
+                ((Home) fragmentActivity).goToRicette();
             }
         });
 
@@ -44,8 +43,8 @@ public class FRAG_home_chef extends Fragment {
         avviaSchermataLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentActivity fragmentActivity = (home)getActivity();
-                ((home) fragmentActivity).goToLogout();
+                FragmentActivity fragmentActivity = (Home)getActivity();
+                ((Home) fragmentActivity).goToLogout();
             }
         });
 

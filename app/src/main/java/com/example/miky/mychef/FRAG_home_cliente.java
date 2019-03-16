@@ -34,8 +34,8 @@ public class FRAG_home_cliente extends Fragment {
         avviaSchermataRicerca.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentActivity fragmentActivity = (home)getActivity();
-                ((home) fragmentActivity).goToCercaChef();
+                FragmentActivity fragmentActivity = (Home)getActivity();
+                ((Home) fragmentActivity).goToCercaChef();
             }
         });
 
@@ -43,8 +43,8 @@ public class FRAG_home_cliente extends Fragment {
         avviaSchermataLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentActivity fragmentActivity = (home)getActivity();
-                ((home) fragmentActivity).goToLogout();
+                FragmentActivity fragmentActivity = (Home)getActivity();
+                ((Home) fragmentActivity).goToLogout();
             }
         });
 
