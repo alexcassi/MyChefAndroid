@@ -1,9 +1,14 @@
 package com.example.miky.mychef;
 
 import android.app.Activity;
+import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -38,10 +43,10 @@ public class Ricette extends Activity {
             @Override
             public void onResponse(Call<List<Ricetta>> call, Response<List<Ricetta>> response) {
                 lista_ricette = response.body();
-                Log.w("RISPOSTA: ", response.body().toString());
 
                 listView = findViewById(R.id.ricetteLV);
-                ricetteArrayAdapter = new RicetteArrayAdapter(Ricette.this,R.layout.ricette_single_row);
+                ricetteArrayAdapter = new RicetteArrayAdapter(Ricette.this,
+                        R.layout.ricette_single_row);
                 ricetteArrayAdapter.addAll(lista_ricette);
                 listView.setAdapter(ricetteArrayAdapter);
 
@@ -50,12 +55,25 @@ public class Ricette extends Activity {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-                adapterRicetta.updateOrCreateRicette(lista_ricette,Sessione.getSessionId(getApplicationContext()));
+                adapterRicetta.updateOrCreateRicette(lista_ricette,
+                        Sessione.getSessionId(getApplicationContext()));
+
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        Ricetta r = ricetteArrayAdapter.getItem(i);
+                        Intent dettagli = new Intent(Ricette.this, Dettagli_ricetta.class);
+                        dettagli.putExtra("id_ricetta",r.getId());
+                        startActivity(dettagli);
+                    }
+                });
+
             }
 
             @Override
             public void onFailure(Call<List<Ricetta>> call, Throwable t) {
-                Log.w("ERRORE", "ERRORE");
+                Toast.makeText(Ricette.this,
+                        "Errore interno. Riprovare. Se persiste contattarci", Toast.LENGTH_LONG).show();
             }
         });
     }

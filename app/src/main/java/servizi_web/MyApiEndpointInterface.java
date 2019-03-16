@@ -1,5 +1,7 @@
 package servizi_web;
 
+import android.content.Intent;
+
 import java.util.List;
 import java.util.TreeMap;
 
@@ -27,5 +29,8 @@ public interface MyApiEndpointInterface {
 
     @GET("/web-mychef/ListaRicetteServlet")
     Call<List<Ricetta>> getRicette(@Query("chef_email") String email);
+
+    @GET("/web-mychef/DettagliRicettaServletAndroid")
+    Call<Ricetta> getRicetta(@Query("id_ricetta") Integer id_ricetta);
 
 }

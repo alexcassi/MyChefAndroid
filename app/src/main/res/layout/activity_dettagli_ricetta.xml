@@ -37,52 +37,100 @@
             android:gravity="center" />
 
         <TextView
-            android:id="@+id/nome"
-            android:text="NOME"
+            android:id="@+id/title_nome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_below="@id/title"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="60dp"
+            android:gravity="center"
+            android:text="NOME:"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/nome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title_nome"
             android:layout_centerHorizontal="true"
             android:gravity="center"
-            android:textSize="20dp"
-            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/title_ingredienti"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nome"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="INGREDIENTI:"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/ingredienti"
-            android:text="INGREDIENTI"
-            android:layout_below="@id/nome"
-            android:layout_marginTop="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title_ingredienti"
             android:layout_centerHorizontal="true"
             android:gravity="center"
-            android:textSize="20dp"
-            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/title_tempo"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ingredienti"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="TEMPO PREPARAZIONE:"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tempo"
-            android:text="TEMPO PREPARAZIONE"
-            android:layout_below="@id/ingredienti"
-            android:layout_marginTop="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title_tempo"
             android:layout_centerHorizontal="true"
             android:gravity="center"
-            android:textSize="20dp"
-            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/title_prezzo"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tempo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="PREZZO:"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/prezzo"
-            android:text="PREZZO"
-            android:layout_below="@id/tempo"
-            android:layout_marginTop="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title_prezzo"
             android:layout_centerHorizontal="true"
             android:gravity="center"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/ricette"

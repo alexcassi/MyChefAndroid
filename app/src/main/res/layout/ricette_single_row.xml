@@ -3,30 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <TextView
         android:id="@+id/nomeTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="NOME: "
-        android:layout_margin="5dp"/>
-    <TextView
-        android:id="@+id/ingrTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="INGREDIENTI: "
-        android:layout_margin="5dp"/>
-    <TextView
-        android:id="@+id/tempoTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TEMPO PREPARAZIONE: "
-        android:layout_margin="5dp"/>
-
-    <TextView
-        android:id="@+id/prezzoTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="PREZZO: "
         android:layout_margin="5dp"/>
 
 </LinearLayout>

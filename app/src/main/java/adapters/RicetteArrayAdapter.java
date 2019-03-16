@@ -32,27 +32,18 @@ public class RicetteArrayAdapter extends ArrayAdapter<Ricetta> {
             v = vi.inflate(R.layout.ricette_single_row, null);
             holder = new ViewHolder();
             holder.nome = (TextView) v.findViewById(R.id.nomeTV);
-            holder.ingredienti = (TextView) v.findViewById(R.id.ingrTV);
-            holder.tempo = (TextView) v.findViewById(R.id.tempoTV);
-            holder.prezzo = (TextView) v.findViewById(R.id.prezzoTV);
             v.setTag(holder);
         }
         else {
             holder = (ViewHolder) v.getTag();
         }
         holder.nome.setText(getItem(position).getNome_ricetta());
-        holder.ingredienti.setText(getItem(position).getIngredienti());
-        holder.tempo.setText(getItem(position).getTempo_preparazione());
-        holder.prezzo.setText(getItem(position).getPrezzo().toString());
 
         return v;
     }
 
     static class ViewHolder {
         TextView nome;
-        TextView ingredienti;
-        TextView tempo;
-        TextView prezzo;
     }
 
 }
