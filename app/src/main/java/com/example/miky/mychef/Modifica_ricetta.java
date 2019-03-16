@@ -52,11 +52,14 @@ public class Modifica_ricetta extends Activity {
                 aggiornaCall.enqueue(new Callback<String>() {
                     @Override
                     public void onResponse(Call<String> call, Response<String> response) {
+                        String risposta = response.body().toString();
                         Toast.makeText(Modifica_ricetta.this,
-                                "Ricetta aggiornata", Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(Modifica_ricetta.this,Dettagli_ricetta.class);
-                        intent.putExtra("id_ricetta",id);
-                        startActivity(intent);
+                                risposta, Toast.LENGTH_LONG).show();
+                        if(risposta.equals("ricetta aggiornata")) {
+                            Intent intent = new Intent(Modifica_ricetta.this, Dettagli_ricetta.class);
+                            intent.putExtra("id_ricetta", id);
+                            startActivity(intent);
+                        }
                     }
 
                     @Override

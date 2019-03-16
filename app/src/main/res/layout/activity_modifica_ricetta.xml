@@ -54,7 +54,7 @@
         android:layout_marginTop="60dp"
         android:ems="11"
         android:gravity="center"
-        android:hint="TEMPO DI PREPARAZIONE"
+        android:hint="TEMPO PREPARAZIONE (MINUTI)"
         android:textColorHint="@android:color/background_dark" />
 
     <EditText

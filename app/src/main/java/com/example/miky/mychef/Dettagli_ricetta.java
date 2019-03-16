@@ -8,7 +8,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.sql.SQLException;
+
+import database.DbAdapterRicetta;
 import entità.Ricetta;
+import preferenze.Sessione;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -16,6 +20,7 @@ import servizi_web.ServerUtility;
 
 public class Dettagli_ricetta extends Activity {
 
+    DbAdapterRicetta adapterRicetta = new DbAdapterRicetta(this);
     Integer id;
     Button avviaSchermataEdit;
     Button avviaSchermataRicette;
@@ -52,21 +57,29 @@ public class Dettagli_ricetta extends Activity {
             public void onResponse(Call<Ricetta> call, Response<Ricetta> response) {
                 TextView tv_nome = findViewById(R.id.nome);
                 tv_nome.append("\n"+response.body().getNome_ricetta());
-
                 TextView tv_ingr = findViewById(R.id.ingredienti);
                 tv_ingr.append("\n"+response.body().getIngredienti());
-
                 TextView tv_tempo = findViewById(R.id.tempo);
                 tv_tempo.append("\n"+response.body().getTempo_preparazione() + " min");
-
                 TextView tv_prezzo = findViewById(R.id.prezzo);
                 tv_prezzo.append("\n"+response.body().getPrezzo() + " €");
+
+                try {
+                    adapterRicetta.open();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                if(!(adapterRicetta.updateRicetta(response.body()))){
+                    adapterRicetta.createRicetta(response.body(), Sessione.
+                            getSessionId(getApplicationContext()));
+                }
             }
 
             @Override
             public void onFailure(Call<Ricetta> call, Throwable t) {
                 Toast.makeText(Dettagli_ricetta.this,
-                        "Errore interno. Riprovare. Se persiste contattarci", Toast.LENGTH_LONG).show();
+                        "Errore interno. Riprovare. Se persiste contattarci",
+                        Toast.LENGTH_LONG).show();
             }
         });
 

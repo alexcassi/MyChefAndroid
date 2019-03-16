@@ -61,8 +61,8 @@ public class DbAdapterRicetta {
     }
 
     //create
-    public long createRicetta(Ricetta r) {
-        ContentValues initialValues = createContentValues(r.getId(),r.getNome_ricetta(), r.getIngredienti(), r.getTempo_preparazione(), r.getPrezzo(), r.getChef().getEmail(), r.getImmagine_ricetta());
+    public long createRicetta(Ricetta r, String email_chef) {
+        ContentValues initialValues = createContentValues(r.getId(),r.getNome_ricetta(), r.getIngredienti(), r.getTempo_preparazione(), r.getPrezzo(), email_chef, r.getImmagine_ricetta());
         return database.insertOrThrow(DATABASE_TABLE, null, initialValues);
     }
 
@@ -76,6 +76,12 @@ public class DbAdapterRicetta {
         ContentValues updateValues = createContentValues(id, nome_ricetta, ingredienti, tempo_preparazione, prezzo, chef_email, immagine_ricetta);
         return database.update(DATABASE_TABLE, updateValues, KEY_ID + "= ?",
                 new String[]{id.toString()}) > 0;
+    }
+    public boolean updateRicetta( Ricetta r ) {
+        ContentValues updateValues = createContentValues(r.getId(),r.getNome_ricetta(), r.getIngredienti(), r.getTempo_preparazione(), r.getPrezzo(), r.getChef().getEmail(), r.getImmagine_ricetta());
+        String id_str = r.getId().toString();
+        return database.update(DATABASE_TABLE, updateValues, KEY_ID + "= ?",
+                new String[]{id_str}) > 0;
     }
     public void updateOrCreateRicette(List<Ricetta> list, String email_chef) {
         for (Ricetta r : list) {
