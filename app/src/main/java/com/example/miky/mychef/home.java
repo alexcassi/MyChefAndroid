@@ -1,15 +1,9 @@
 package com.example.miky.mychef;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.view.View;
-import android.widget.Button;
 
-import preferenze.Preferenze;
 import preferenze.Sessione;
 
 public class home extends FragmentActivity {
@@ -45,6 +39,9 @@ public class home extends FragmentActivity {
 
     public void goToLogout () {
         Sessione.logout(getApplicationContext());
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
     }
 
     public void goToCercaChef(){
@@ -52,7 +49,7 @@ public class home extends FragmentActivity {
     }
 
     public void goToRicette(){
-        Intent intent = new Intent(home.this, ricette.class);
+        Intent intent = new Intent(home.this, Dettagli_ricetta.class);
         startActivity(intent);
     }
 

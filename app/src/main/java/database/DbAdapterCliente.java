@@ -107,6 +107,12 @@ public class DbAdapterCliente {
         return false;
     }
 
+    /*public Cursor getChef(String email) {
+    String selectQuery = "SELECT * FROM chef where email='"+email+"'";
+    Cursor cursor = database.rawQuery(selectQuery, null);
+    return cursor;
+    }*/
+
     //fetch chefs filter by a string
     /*public Cursor fetchChefsByFilter(String filter) {
         Cursor mCursor = database.query(true, DATABASE_TABLE, new String[] {
@@ -115,21 +121,6 @@ public class DbAdapterCliente {
                 null, null);
         return mCursor;
     }*/
-
-    /*
-    public HashMap getChefInfo(String email) {
-        HashMap wordList = new HashMap();
-        SQLiteDatabase database = dbHelper.getReadableDatabase();
-        String selectQuery = "SELECT * FROM chef where email='"+email+"'";
-        Cursor cursor = database.rawQuery(selectQuery, null);
-        if (cursor.moveToFirst()) {
-            do {
-                wordList.put("name", cursor.getString(1));
-            } while (cursor.moveToNext());
-        }
-        return wordList;
-    }*/
-
 
     /*
     public void insertFast(int insertCount) {

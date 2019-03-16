@@ -101,16 +101,10 @@ public class DbAdapterChef {
         return false;
     }
 
-    /*public HashMap getChef(String email) {
-        HashMap wordList = new HashMap();
+    /*public Cursor getChef(String email) {
         String selectQuery = "SELECT * FROM chef where email='"+email+"'";
         Cursor cursor = database.rawQuery(selectQuery, null);
-        if (cursor.moveToFirst()) {
-            do {
-                wordList.put("email",cursor.getString(1));
-                //...
-            } while (cursor.moveToNext());
-        }
+        return cursor;
     }*/
 
     //fetch chefs filter by a string

@@ -1,9 +1,18 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/layer1"
     tools:context=".modifica_profilo_chef">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
 
     <TextView
         android:id="@+id/titolo"
@@ -73,8 +82,11 @@
         android:layout_below="@+id/prezzo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
+        android:layout_marginBottom="30dp"
         android:background="@android:color/holo_orange_dark"
         android:gravity="center"
         android:text="AGGIORNA" />
 
-</RelativeLayout>
+    </RelativeLayout>
+
+</ScrollView>

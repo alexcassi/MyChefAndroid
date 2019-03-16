@@ -8,7 +8,7 @@ public class Chef extends Utente {
 
     @SerializedName("luogo_lavoro")
     private String luogo_lavoro;
-    @SerializedName("ricette")
+    @SerializedName("Dettagli_ricetta")
     private List<Ricetta> ricette;
     @SerializedName("immagine_profilo")
     private String immagine_profilo;

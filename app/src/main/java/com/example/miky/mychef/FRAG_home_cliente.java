@@ -7,6 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+
+import preferenze.Sessione;
 
 public class FRAG_home_cliente extends Fragment {
 
@@ -23,6 +26,9 @@ public class FRAG_home_cliente extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_frag_home_cliente, container, false);
+
+        TextView welcome = rootView.findViewById(R.id.welcome);
+        welcome.setText("Benvenuto " + Sessione.getSessionUserName(getContext()) + " !");
 
         Button avviaSchermataRicerca = (Button)rootView.findViewById(R.id.ricerca);
         avviaSchermataRicerca.setOnClickListener(new View.OnClickListener() {

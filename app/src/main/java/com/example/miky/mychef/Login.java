@@ -49,14 +49,15 @@ public class Login extends Activity {
                         .login(user.getText().toString(), password.getText().toString());
                 call_utente.enqueue(new Callback<TreeMap<String,String>>() {
                     @Override
-                    public void onResponse(Call<TreeMap<String,String>> call, Response<TreeMap<String,String>> response) {
+                    public void onResponse(Call<TreeMap<String,String>> call,
+                                           Response<TreeMap<String,String>> response) {
+                        boolean login_avvenuto = false;
                         TreeMap<String,String> risposta = response.body();
-                        Log.w("la risposta", new Gson().toJson(response));
-                        Log.w("la risposta", response.toString());
 
                         //caso chef
                         if(risposta.containsKey("luogo_lavoro")){
-                            Sessione.loginChef(getApplicationContext(),risposta.get("email"),risposta.get("password"));
+                            Sessione.loginChef(getApplicationContext(),
+                                    risposta.get("email"),risposta.get("password"),risposta.get("nome"));
                             DbAdapterChef adapter_chef = new DbAdapterChef(getApplicationContext());
                             try {
                                 adapter_chef.open();
@@ -66,11 +67,13 @@ public class Login extends Activity {
                             if(!adapter_chef.updateChef(risposta)){
                                 adapter_chef.createChef(risposta);
                             }
+                            login_avvenuto = true;
 
                         } else {
                             //caso cliente
                             if (risposta.containsKey("indirizzo")) {
-                                Sessione.loginCliente(getApplicationContext(),risposta.get("email"),risposta.get("password"));
+                                Sessione.loginCliente(getApplicationContext(),
+                                        risposta.get("email"),risposta.get("password"),risposta.get("nome"));
                                 DbAdapterCliente adapter_cliente = new DbAdapterCliente(getApplicationContext());
                                 try {
                                     adapter_cliente.open();
@@ -82,13 +85,19 @@ public class Login extends Activity {
                                 } else {
                                     adapter_cliente.updateCliente(risposta);
                                 }
+                                login_avvenuto = true;
 
                             } else {
                                 //caso login fallito
                                 toast =  Toast.makeText(getApplicationContext(),
                                         risposta.get(("messaggio")), Toast.LENGTH_LONG);
                                 toast.show();
+                                login_avvenuto = false;
                             }
+                        }
+                        if (login_avvenuto){
+                            Intent intent = new Intent(Login.this, home.class);
+                            startActivity(intent);
                         }
                     }
                     @Override

@@ -6,19 +6,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class ricette extends Activity {
+public class Dettagli_ricetta extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ricette);
+        setContentView(R.layout.activity_dettagli_ricetta);
 
-        Button avviaSchermata = (Button)findViewById(R.id.edit);
-        avviaSchermata.setOnClickListener(new View.OnClickListener() {
+        Button avviaSchermataEdit = (Button)findViewById(R.id.edit);
+        avviaSchermataEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent secondIntent = new Intent(ricette.this,modifica_ricette.class);
-                startActivity(secondIntent);
+                Intent intent = new Intent(Dettagli_ricetta.this,modifica_ricette.class);
+                startActivity(intent);
             }
         });
     }

@@ -7,6 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+
+import database.DbAdapterChef;
+import preferenze.Sessione;
 
 public class FRAG_home_chef extends Fragment {
 
@@ -23,6 +27,9 @@ public class FRAG_home_chef extends Fragment {
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_frag_home_chef, container, false);
+
+        TextView welcome = rootView.findViewById(R.id.welcome);
+        welcome.setText("Benvenuto " + Sessione.getSessionUserName(getContext()) + " !");
 
         Button avviaSchermataRicette = (Button)rootView.findViewById(R.id.button_ricette);
         avviaSchermataRicette.setOnClickListener(new View.OnClickListener() {
