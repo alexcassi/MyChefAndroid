@@ -49,4 +49,6 @@ public interface MyApiEndpointInterface {
                                @Field("prezzo") Double prezzo,
                                @Field("chef_email") String chef_email);
 
+    @GET("/web-mychef/RimuoviRicettaControllerAndroid")
+    Call<String> removeRicetta(@Query("id_ricetta") Integer id_ricetta);
 }

@@ -1,6 +1,8 @@
 package com.example.miky.mychef;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +25,7 @@ public class Dettagli_ricetta extends Activity {
     DbAdapterRicetta adapterRicetta = new DbAdapterRicetta(this);
     Integer id;
     Button avviaSchermataEdit;
+    Button avviaDelete;
     Button avviaSchermataRicette;
 
     @Override
@@ -47,6 +50,51 @@ public class Dettagli_ricetta extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(Dettagli_ricetta.this,Ricette.class);
                 startActivity(intent);
+            }
+        });
+        avviaDelete = findViewById(R.id.delete);
+        avviaDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new AlertDialog.Builder(Dettagli_ricetta.this)
+                        .setTitle("Elimina ricetta")
+                        .setMessage("Sei sicuro di voler eliminare la ricetta?")
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setPositiveButton("Sì", new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                Call<String> eliminaCall = ServerUtility.getApiService()
+                                        .removeRicetta(id);
+                                eliminaCall.enqueue(new Callback<String>() {
+                                    @Override
+                                    public void onResponse(Call<String> call, Response<String> response) {
+                                        if (response.body().toString().equals("ok")){
+                                            Toast.makeText(Dettagli_ricetta.this,
+                                                    "Ricetta eliminata",
+                                                    Toast.LENGTH_LONG).show();
+                                            Intent intent = new Intent(Dettagli_ricetta.this,
+                                                    Ricette.class);
+                                            startActivity(intent);
+                                        } else {
+                                            Toast.makeText(Dettagli_ricetta.this,
+                                                    "Errore interno. Riprovare. Se persiste contattarci",
+                                                    Toast.LENGTH_LONG).show();
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<String> call, Throwable t) {
+                                        Toast.makeText(Dettagli_ricetta.this,
+                                                "Errore interno. Riprovare. Se persiste contattarci",
+                                                Toast.LENGTH_LONG).show();
+                                    }
+                                });
+                            }})
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                            }
+                        }).show();
             }
         });
 
