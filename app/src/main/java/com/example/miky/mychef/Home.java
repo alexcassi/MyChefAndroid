@@ -3,6 +3,7 @@ package com.example.miky.mychef;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.widget.Toast;
 
 import preferenze.Sessione;
 
@@ -42,6 +43,9 @@ public class Home extends FragmentActivity {
         Intent intent = getIntent();
         finish();
         startActivity(intent);
+        Toast.makeText(Home.this,
+                "Logout eseguito",
+                Toast.LENGTH_LONG).show();
     }
 
     public void goToCercaChef(){

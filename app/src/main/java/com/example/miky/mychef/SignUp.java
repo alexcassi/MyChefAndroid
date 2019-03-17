@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 
 public class SignUp extends Activity {
 
@@ -22,5 +23,18 @@ public class SignUp extends Activity {
             }
         });
 
+    }
+
+    public void mostraCampiChef(View view){
+        RelativeLayout chef_buttons = findViewById(R.id.gruppoChef);
+        RelativeLayout cliente_buttons = findViewById(R.id.gruppoCliente);
+        cliente_buttons.setVisibility(View.GONE);
+        chef_buttons.setVisibility(View.VISIBLE);
+    }
+    public void mostraCampiCliente(View view){
+        RelativeLayout chef_buttons = findViewById(R.id.gruppoChef);
+        RelativeLayout cliente_buttons = findViewById(R.id.gruppoCliente);
+        cliente_buttons.setVisibility(View.VISIBLE);
+        chef_buttons.setVisibility(View.GONE);
     }
 }

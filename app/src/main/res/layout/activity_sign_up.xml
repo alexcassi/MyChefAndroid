@@ -14,6 +14,105 @@
     android:layout_height="wrap_content">
 
 
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:layout_below="@id/pass2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkedButton="@+id/radioButtonChef">
+
+                <RadioButton
+                    android:onClick="mostraCampiChef"
+                    android:id="@+id/radioButtonChef"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="sono uno chef" />
+
+                <RadioButton
+                    android:onClick="mostraCampiCliente"
+                    android:id="@+id/radioButtonCliente"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="sono un cliente" />
+        </RadioGroup>
+
+        <RelativeLayout
+            android:layout_below="@id/radioGroup"
+            android:id="@+id/gruppiBottoni"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_alignParentTop="true"
+                android:id="@+id/gruppoChef"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/luogo_lavoro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:ems="11"
+                    android:gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:hint="LUOGO DI LAVORO"
+                    android:textColorHint="@android:color/background_dark" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:visibility="gone"
+                android:layout_alignParentTop="true"
+                android:id="@+id/gruppoCliente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/comune"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/provincia"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:ems="11"
+                    android:gravity="center"
+                    android:hint="COMUNE"
+                    android:textColorHint="@android:color/background_dark" />
+
+                <EditText
+                    android:id="@+id/provincia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/indirizzo"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:ems="11"
+                    android:gravity="center"
+                    android:hint="PROVINCIA"
+                    android:textColorHint="@android:color/background_dark" />
+
+                <EditText
+                    android:layout_alignParentTop="true"
+                    android:id="@+id/indirizzo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:ems="11"
+                    android:gravity="center"
+                    android:hint="INDIRIZZO"
+                    android:textColorHint="@android:color/background_dark" />
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
         <EditText
             android:id="@+id/pass2"
             android:layout_width="wrap_content"
@@ -44,60 +143,12 @@
             android:id="@+id/email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/nome_utente"
+            android:layout_below="@id/cognome"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
             android:ems="11"
             android:gravity="center"
             android:hint="EMAIL"
-            android:textColorHint="@android:color/background_dark" />
-
-        <EditText
-            android:id="@+id/citta"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/provincia"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp"
-            android:ems="11"
-            android:gravity="center"
-            android:hint="CITTA'"
-            android:textColorHint="@android:color/background_dark" />
-
-        <EditText
-            android:id="@+id/provincia"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/indirizzo"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp"
-            android:ems="11"
-            android:gravity="center"
-            android:hint="PROVINCIA"
-            android:textColorHint="@android:color/background_dark" />
-
-        <EditText
-            android:id="@+id/indirizzo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/pass2"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp"
-            android:ems="11"
-            android:gravity="center"
-            android:hint="INDIRIZZO"
-            android:textColorHint="@android:color/background_dark" />
-
-        <EditText
-            android:id="@+id/nome_utente"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/cognome"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp"
-            android:ems="11"
-            android:gravity="center"
-            android:hint="NOME UTENTE"
             android:textColorHint="@android:color/background_dark" />
 
         <EditText
@@ -141,9 +192,9 @@
             style="@android:style/Widget.Holo.Button"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/citta"
+            android:layout_below="@+id/gruppiBottoni"
             android:layout_marginTop="80dp"
-            android:layout_marginBottom="80dp"
+            android:layout_marginBottom="30dp"
             android:gravity="center"
             android:layout_centerHorizontal="true"
             android:background="@android:color/holo_orange_dark"
