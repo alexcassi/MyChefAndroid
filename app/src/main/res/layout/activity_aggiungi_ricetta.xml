@@ -1,0 +1,87 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/layer1"
+    tools:context=".Modifica_profilo_chef">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/titolo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="60dp"
+            android:gravity="center"
+            android:text="AGGIUNGI RICETTA"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="40sp"
+            android:textStyle="bold|italic" />
+
+        <EditText
+            android:id="@+id/nome_ricetta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/titolo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="60dp"
+            android:ems="11"
+            android:gravity="center"
+            android:hint="NOME RICETTA"
+            android:textColorHint="@android:color/background_dark" />
+
+        <EditText
+            android:id="@+id/ingredienti"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nome_ricetta"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="60dp"
+            android:ems="11"
+            android:gravity="center"
+            android:hint="INGREDIENTI"
+            android:textColorHint="@android:color/background_dark" />
+
+        <EditText
+            android:id="@+id/tempo_preparazione"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ingredienti"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="60dp"
+            android:ems="11"
+            android:gravity="center"
+            android:hint="TEMPO PREPARAZIONE (MINUTI)"
+            android:textColorHint="@android:color/background_dark" />
+
+        <EditText
+            android:id="@+id/prezzo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tempo_preparazione"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="60dp"
+            android:ems="11"
+            android:gravity="center"
+            android:hint="PREZZO"
+            android:textColorHint="@android:color/background_dark" />
+
+        <Button
+            android:id="@+id/aggiungiBT"
+            style="@android:style/Widget.Holo.Button"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/prezzo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
+            android:layout_marginBottom="30dp"
+            android:background="@android:color/holo_orange_dark"
+            android:gravity="center"
+            android:text="AGGIUNGI" />
+
+    </RelativeLayout>
+
+</ScrollView>

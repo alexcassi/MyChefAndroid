@@ -41,4 +41,12 @@ public interface MyApiEndpointInterface {
                                @Field("prezzo") Double prezzo,
                                @Field("id") Integer id);
 
+    @FormUrlEncoded
+    @POST("/web-mychef/RicettaControllerAndroid")
+    Call<String> addRicetta(@Field("nome_ricetta") String nome_ricetta,
+                               @Field("ingredienti") String ingredienti,
+                               @Field("tempo_preparazione") String tempo_preparazione,
+                               @Field("prezzo") Double prezzo,
+                               @Field("chef_email") String chef_email);
+
 }

@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -30,12 +32,21 @@ public class Ricette extends Activity {
     RicetteArrayAdapter ricetteArrayAdapter;
     ListView listView;
     List<Ricetta> lista_ricette;
+    ImageButton aggiungi_ricetta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ricette);
 
+        aggiungi_ricetta = findViewById(R.id.add_ricettaBT);
+        aggiungi_ricetta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Ricette.this,Aggiungi_ricetta.class);
+                startActivity(intent);
+            }
+        });
 
         final Call<List<Ricetta>> call_ricette = ServerUtility.getApiService()
                 .getRicette(Sessione.getSessionId(getApplicationContext()));

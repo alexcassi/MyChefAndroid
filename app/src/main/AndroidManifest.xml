@@ -11,7 +11,8 @@
         android:roundIcon="@drawable/logo_nuovo2_android"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Ricette"></activity>
+        <activity android:name=".Aggiungi_ricetta"></activity>
+        <activity android:name=".Ricette" />
         <activity android:name=".Dettagli_ricetta" />
         <activity android:name=".Modifica_ricetta" />
         <activity android:name=".Modifica_profilo_cliente" />
