@@ -26,6 +26,12 @@ public interface MyApiEndpointInterface {
     Call<String> signupChef(@Field("email") String email, @Field("password") String password,
                             @Field("nome") String nome, @Field("cognome") String cognome,
                             @Field("luogo_lavoro") String luogo_lavoro);
+    @FormUrlEncoded
+    @POST ("/web-mychef/SignUpClienteControllerAndroid")
+    Call<String> signupCliente(@Field("email") String email, @Field("password") String password,
+                            @Field("nome") String nome, @Field("cognome") String cognome,
+                            @Field("comune") String comune,@Field("provincia") String provincia,
+                            @Field("indirizzo") String indirizzo);
 
     @GET("/web-mychef/ListaRicetteServlet")
     Call<List<Ricetta>> getRicette(@Query("chef_email") String email);

@@ -14,6 +14,12 @@ import android.widget.Toast;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import preferenze.Sessione;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import servizi_web.ServerUtility;
+
 public class SignUp extends Activity {
 
     Button signupBT;
@@ -199,7 +205,51 @@ public class SignUp extends Activity {
                 if(errore){
                     Toast.makeText(SignUp.this,"correggere i campi",Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(SignUp.this,"campi corretti",Toast.LENGTH_LONG).show();
+
+                    //registrazione cliente
+                    if (!chef_or_cliente) {
+                        Call<String> signup_cliente_call = ServerUtility.getApiService().signupCliente(email.getText().toString(),
+                                pass1.getText().toString(), nome.getText().toString(), cognome.getText().toString(),
+                                comune.getText().toString(), provincia.getText().toString(), indirizzo.getText().toString());
+                        signup_cliente_call.enqueue(new Callback<String>() {
+                            @Override
+                            public void onResponse(Call<String> call, Response<String> response) {
+                                if(response.body().toString().equals("registrazione avvenuta")){
+                                    Sessione.loginCliente(getApplicationContext(),email.getText().toString(),pass1.getText().toString(),
+                                            nome.getText().toString() );
+                                    signupSuccess();
+                                } else {
+                                    signupFail(response.body().toString());
+                                }
+                            }
+                            @Override
+                            public void onFailure(Call<String> call, Throwable t) {
+                                internalError();
+                            }
+                        });
+                    }
+                    //registrazione chef
+                    if (chef_or_cliente) {
+                        Call<String> signup_chef_call = ServerUtility.getApiService().signupChef(email.getText().toString(),
+                                pass1.getText().toString(), nome.getText().toString(), cognome.getText().toString(),
+                                luogo_lavoro.getText().toString());
+                        signup_chef_call.enqueue(new Callback<String>() {
+                            @Override
+                            public void onResponse(Call<String> call, Response<String> response) {
+                                if(response.body().toString().equals("registrazione avvenuta")){
+                                    Sessione.loginChef(getApplicationContext(),email.getText().toString(),pass1.getText().toString(),
+                                            nome.getText().toString() );
+                                    signupSuccess();
+                                } else {
+                                    signupFail(response.body().toString());
+                                }
+                            }
+                            @Override
+                            public void onFailure(Call<String> call, Throwable t) {
+                                internalError();
+                            }
+                        });
+                    }
                 }
             }
         });
@@ -238,4 +288,20 @@ public class SignUp extends Activity {
             return matcher.matches();
         }
     }
+
+    public void signupSuccess(){
+        Toast.makeText(SignUp.this,"registrazione avvenuta",Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(SignUp.this,Home.class);
+        startActivity(intent);
+    }
+
+    public void signupFail(String message){
+        Toast.makeText(SignUp.this,message,Toast.LENGTH_LONG).show();
+    }
+
+    public void internalError(){
+        Toast.makeText(SignUp.this,"Errore interno. Riprovare. Se persiste contattarci",
+                Toast.LENGTH_LONG).show();
+    }
+
 }

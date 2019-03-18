@@ -35,7 +35,7 @@
             android:layout_marginTop="60dp"
             android:ems="11"
             android:gravity="center"
-            android:hint="NOME UTENTE"
+            android:hint="EMAIL"
             android:textColorHint="@android:color/background_dark" />
 
         <TextView
