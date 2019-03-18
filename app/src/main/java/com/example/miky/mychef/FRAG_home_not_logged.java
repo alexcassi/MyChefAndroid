@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import utilities.Utilities;
+
 public class FRAG_home_not_logged extends Fragment {
 
     public FRAG_home_not_logged() {
@@ -41,6 +43,9 @@ public class FRAG_home_not_logged extends Fragment {
                 ((Home) fragmentActivity).goToSignup();
             }
         });
+
+        Utilities.buttonEffect(avviaSchermataLogin);
+        Utilities.buttonEffect(avviaSchermataSignup);
 
         return rootView;
     }

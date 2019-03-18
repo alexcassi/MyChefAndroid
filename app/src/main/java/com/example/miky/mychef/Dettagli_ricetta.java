@@ -19,6 +19,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import servizi_web.ServerUtility;
+import utilities.Utilities;
 
 public class Dettagli_ricetta extends Activity {
 
@@ -36,6 +37,7 @@ public class Dettagli_ricetta extends Activity {
         id = getIntent().getIntExtra("id_ricetta",-1);
 
         avviaSchermataEdit = (Button)findViewById(R.id.edit);
+        Utilities.buttonEffect(avviaSchermataEdit);
         avviaSchermataEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,6 +47,7 @@ public class Dettagli_ricetta extends Activity {
             }
         });
         avviaSchermataRicette = (Button)findViewById(R.id.ricette);
+        Utilities.buttonEffect(avviaSchermataRicette);
         avviaSchermataRicette.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,6 +56,7 @@ public class Dettagli_ricetta extends Activity {
             }
         });
         avviaDelete = findViewById(R.id.delete);
+        Utilities.buttonEffect(avviaDelete);
         avviaDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

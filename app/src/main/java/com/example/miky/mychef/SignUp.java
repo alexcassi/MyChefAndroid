@@ -19,6 +19,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import servizi_web.ServerUtility;
+import utilities.Utilities;
 
 public class SignUp extends Activity {
 
@@ -168,6 +169,7 @@ public class SignUp extends Activity {
         });
 
         signupBT = findViewById(R.id.signup);
+        Utilities.buttonEffect(signupBT);
         signupBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

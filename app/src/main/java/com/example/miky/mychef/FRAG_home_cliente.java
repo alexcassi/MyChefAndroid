@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import preferenze.Sessione;
+import utilities.Utilities;
 
 public class FRAG_home_cliente extends Fragment {
 
@@ -47,6 +48,10 @@ public class FRAG_home_cliente extends Fragment {
                 ((Home) fragmentActivity).goToLogout();
             }
         });
+
+        Utilities.buttonEffect(avviaSchermataLogout);
+        Utilities.buttonEffect(avviaSchermataRicerca);
+
 
         return rootView;
     }

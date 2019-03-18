@@ -2,7 +2,9 @@ package com.example.miky.mychef;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,6 +20,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import servizi_web.ServerUtility;
+import utilities.Utilities;
 
 public class Login extends Activity {
 
@@ -33,6 +36,7 @@ public class Login extends Activity {
         user = findViewById(R.id.nome_utente);
         password = findViewById(R.id.password);
         login = (Button)findViewById(R.id.login);
+        Utilities.buttonEffect(login);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override

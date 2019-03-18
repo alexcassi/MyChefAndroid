@@ -15,6 +15,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import servizi_web.MyApiEndpointInterface;
 import servizi_web.ServerUtility;
+import utilities.Utilities;
 
 public class Modifica_ricetta extends Activity {
 
@@ -37,6 +38,7 @@ public class Modifica_ricetta extends Activity {
         id = getIntent().getIntExtra("id_ricetta",-1);
 
         button_aggiorna = (Button)findViewById(R.id.aggiorna);
+        Utilities.buttonEffect(button_aggiorna);
         button_aggiorna.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

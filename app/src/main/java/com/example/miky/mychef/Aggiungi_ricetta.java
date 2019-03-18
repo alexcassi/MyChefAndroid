@@ -15,6 +15,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import servizi_web.MyApiEndpointInterface;
 import servizi_web.ServerUtility;
+import utilities.Utilities;
 
 public class Aggiungi_ricetta extends Activity {
     Button button_aggiungi;
@@ -35,6 +36,7 @@ public class Aggiungi_ricetta extends Activity {
         email_chef = Sessione.getSessionId(getApplicationContext());
 
         button_aggiungi = (Button)findViewById(R.id.aggiungiBT);
+        Utilities.buttonEffect(button_aggiungi);
         button_aggiungi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
