@@ -3,6 +3,7 @@ package com.example.miky.mychef;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.View;
 import android.widget.Toast;
 
 import preferenze.Sessione;
@@ -55,6 +56,11 @@ public class Home extends FragmentActivity {
     public void goToRicette(){
         Intent intent = new Intent(Home.this, Ricette.class);
         startActivity(intent);
+    }
+
+    public void goToHome(View view){
+        Intent intent = new Intent(view.getContext(),Home.class);
+        view.getContext().startActivity(intent);
     }
 
 }
