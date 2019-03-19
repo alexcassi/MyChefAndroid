@@ -6,12 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@drawable/layer1"
     tools:context=".Home">
 
-    <include layout="@layout/barra_menu"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"></include>
+    <FrameLayout
+        android:id="@+id/frame_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </FrameLayout>
 
 <ScrollView
     android:layout_width="match_parent"

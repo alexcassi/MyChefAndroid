@@ -3,6 +3,7 @@ package com.example.miky.mychef;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -21,7 +22,7 @@ import retrofit2.Response;
 import servizi_web.ServerUtility;
 import utilities.Utilities;
 
-public class SignUp extends Activity {
+public class SignUp extends FragmentActivity {
 
     Button signupBT;
     EditText nome, cognome, email, pass1, pass2, luogo_lavoro, indirizzo, provincia, comune;
@@ -32,6 +33,9 @@ public class SignUp extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+        getSupportFragmentManager().beginTransaction().add(R.id.frame_menu,
+                new FRAG_MENU_BAR()).commit();
 
         emailValidator = new EmailValidator();
         chef_or_cliente = true;

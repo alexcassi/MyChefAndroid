@@ -3,6 +3,7 @@ package com.example.miky.mychef;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,7 +18,7 @@ import servizi_web.MyApiEndpointInterface;
 import servizi_web.ServerUtility;
 import utilities.Utilities;
 
-public class Modifica_ricetta extends Activity {
+public class Modifica_ricetta extends FragmentActivity {
 
     Integer id;
     Button button_aggiorna;
@@ -33,6 +34,9 @@ public class Modifica_ricetta extends Activity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modifica_ricetta);
+
+        getSupportFragmentManager().beginTransaction().add(R.id.frame_menu,
+                new FRAG_MENU_BAR()).commit();
 
         api_service = ServerUtility.getApiService();
         id = getIntent().getIntExtra("id_ricetta",-1);
@@ -96,4 +100,5 @@ public class Modifica_ricetta extends Activity {
         });
 
     }
+
 }

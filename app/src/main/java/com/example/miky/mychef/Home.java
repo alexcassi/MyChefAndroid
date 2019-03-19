@@ -15,6 +15,9 @@ public class Home extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        getSupportFragmentManager().beginTransaction().add(R.id.frame_menu,
+                new FRAG_MENU_BAR()).commit();
+
         if (Sessione.isCliente(getApplicationContext())){
             getSupportFragmentManager().beginTransaction().add(R.id.frame_home,
                     new FRAG_home_cliente()).commit();
@@ -56,11 +59,6 @@ public class Home extends FragmentActivity {
     public void goToRicette(){
         Intent intent = new Intent(Home.this, Ricette.class);
         startActivity(intent);
-    }
-
-    public void goToHome(View view){
-        Intent intent = new Intent(view.getContext(),Home.class);
-        view.getContext().startActivity(intent);
     }
 
 }

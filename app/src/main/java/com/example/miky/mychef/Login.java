@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -22,7 +23,7 @@ import retrofit2.Response;
 import servizi_web.ServerUtility;
 import utilities.Utilities;
 
-public class Login extends Activity {
+public class Login extends FragmentActivity {
 
     Button login;
     EditText user;
@@ -37,6 +38,9 @@ public class Login extends Activity {
         password = findViewById(R.id.password);
         login = (Button)findViewById(R.id.login);
         Utilities.buttonEffect(login);
+
+        getSupportFragmentManager().beginTransaction().add(R.id.frame_menu,
+                new FRAG_MENU_BAR()).commit();
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,4 +111,5 @@ public class Login extends Activity {
         });
 
     }
+
 }

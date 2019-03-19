@@ -1,9 +1,24 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:context=".Aggiungi_ricetta">
+
+    <FrameLayout
+        android:id="@+id/frame_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </FrameLayout>
+
+
+    <ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@drawable/layer1"
-    tools:context=".Modifica_profilo_chef">
+        android:fitsSystemWindows="true"
+    tools:context=".Aggiungi_ricetta">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -85,3 +100,5 @@
     </RelativeLayout>
 
 </ScrollView>
+
+</LinearLayout>
