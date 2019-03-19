@@ -79,6 +79,12 @@ public class DbAdapterChef {
         return database.update(DATABASE_TABLE, updateValues, KEY_EMAIL + "= ?",
                 new String[]{email}) > 0;
     }
+    public boolean updateChef( Chef c ) {
+        ContentValues updateValues = createContentValues(c.getEmail(), c.getNome(), c.getCognome(), c.getLuogo_lavoro(), c.getImmagine_profilo());
+        String email = c.getEmail();
+        return database.update(DATABASE_TABLE, updateValues, KEY_EMAIL + "= ?",
+                new String[]{email}) > 0;
+    }
 
     //delete a chef
     public boolean deleteChef(String email) {

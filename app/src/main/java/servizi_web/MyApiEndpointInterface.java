@@ -57,4 +57,8 @@ public interface MyApiEndpointInterface {
 
     @GET("/web-mychef/RimuoviRicettaControllerAndroid")
     Call<String> removeRicetta(@Query("id_ricetta") Integer id_ricetta);
+
+    @GET("/web-mychef/MostraChefControllerAndroid")
+    Call<Chef> getChef(@Query("chef_email") String chef_email);
+
 }

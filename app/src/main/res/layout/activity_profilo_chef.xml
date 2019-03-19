@@ -1,17 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:context=".Profilo_chef">
+
+    <FrameLayout
+        android:id="@+id/frame_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </FrameLayout>
+
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/layer1"
     android:fitsSystemWindows="true"
-    tools:context=".SignUp">
+    tools:context=".Profilo_chef">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/edit"
+            style="@android:style/Widget.Holo.Button"
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="70dp"
+            android:layout_toRightOf="@id/titolo"
+            android:background="@drawable/ic_edit_orange"
+            android:gravity="center" />
 
         <TextView
             android:id="@+id/titolo"
@@ -25,42 +48,42 @@
             android:textSize="40sp"
             android:textStyle="bold|italic" />
 
-        <EditText
+        <TextView
             android:id="@+id/nome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
             android:layout_below="@id/titolo"
             android:layout_marginTop="100dp"
-            android:ems="8"
+            android:textSize="24sp"
+            android:textStyle="bold"
             android:gravity="center"
             android:hint="NOME "
-            android:layout_marginLeft="5dp"
             android:textColorHint="@android:color/background_dark" />
 
-        <EditText
+        <TextView
             android:id="@+id/cognome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
             android:layout_below="@id/nome"
             android:layout_marginTop="15dp"
-            android:ems="8"
+            android:textSize="24sp"
+            android:textStyle="bold"
             android:gravity="center"
-            android:layout_marginLeft="5dp"
             android:hint="COGNOME "
             android:textColorHint="@android:color/background_dark" />
 
-        <EditText
+        <TextView
             android:id="@+id/indirizzo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
             android:layout_below="@id/cognome"
             android:layout_marginTop="15dp"
-            android:ems="8"
+            android:textSize="24sp"
+            android:textStyle="bold"
             android:gravity="center"
-            android:layout_marginLeft="5dp"
             android:hint="EMAIL "
             android:textColorHint="@android:color/background_dark" />
 
@@ -71,47 +94,14 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/indirizzo"
             android:layout_marginTop="80dp"
+            android:layout_marginBottom="30dp"
             android:gravity="center"
             android:layout_centerHorizontal="true"
             android:background="@android:color/holo_orange_dark"
             android:text="RICETTE" />
 
-        <Button
-            android:id="@+id/home"
-            style="@android:style/Widget.Holo.Button"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/ricette"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="80dp"
-            android:gravity="center"
-            android:layout_centerHorizontal="true"
-            android:background="@android:color/holo_orange_dark"
-            android:text="HOME" />
-
-        <Button
-            android:id="@+id/edit"
-            style="@android:style/Widget.Holo.Button"
-            android:layout_width="40sp"
-            android:layout_height="40sp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="70dp"
-            android:layout_toRightOf="@id/titolo"
-            android:background="@drawable/modifica2"
-            android:gravity="center" />
-
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/titolo"
-            android:layout_alignParentRight="true"
-            android:layout_marginHorizontal="100dp"
-            android:layout_marginTop="100dp"
-            android:layout_marginRight="15dp"
-            android:src="@mipmap/ic_launcher" />
 
     </RelativeLayout>
     </ScrollView>
 
+</LinearLayout>

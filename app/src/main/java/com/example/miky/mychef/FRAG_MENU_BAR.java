@@ -64,4 +64,17 @@ public class FRAG_MENU_BAR extends Fragment {
         view.getContext().startActivity(intent);
     }
 
+    public void goToProfile(View view){
+        if (Sessione.isChef(getActivity().getApplicationContext())){
+            Intent intent = new Intent(view.getContext(),Profilo_chef.class);
+            view.getContext().startActivity(intent);
+        } else if (Sessione.isCliente(getActivity().getApplicationContext())){
+            Intent intent = new Intent(view.getContext(),Profilo_cliente.class);
+            view.getContext().startActivity(intent);
+        } else {
+            Intent intent = new Intent(view.getContext(),Login.class);
+            view.getContext().startActivity(intent);
+        }
+    }
+
 }
